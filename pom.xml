@@ -1,0 +1,124 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.glory</groupId>
+  <artifactId>GroupManage</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  
+    <build>
+    <plugins>
+          <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-compiler-plugin</artifactId>
+              <version>3.2</version>
+              <configuration>
+                  <source>1.8</source>
+                  <target>1.8</target>
+              </configuration>
+          </plugin> 
+     <plugin>
+         <groupId>org.apache.tomcat.maven</groupId>
+         <artifactId>tomcat8-maven-plugin</artifactId>
+         <version>2.2</version>
+     <configuration>      
+         <hostName>localhost</hostName>    <!--   Default: localhost -->  
+        <port>80</port>                 <!-- 启动端口 Default:8080 --> 
+        <uriEncoding>UTF-8</uriEncoding>  <!-- uri编码 Default: ISO-8859-1 -->
+     </configuration>                
+     </plugin>
+ </plugins> 
+  </build>
+  <dependencies>  
+        <!--spring中的基本jar包  -->  
+        <dependency>  
+            <groupId>org.springframework</groupId>  
+            <artifactId>spring-context</artifactId>  
+            <version>4.3.12.RELEASE</version>  
+        </dependency>  
+        <!-- template模板jar包 -->  
+        <dependency>  
+            <groupId>org.springframework</groupId>  
+            <artifactId>spring-jdbc</artifactId>  
+            <version>4.3.12.RELEASE</version>  
+        </dependency>  
+        <!-- aop切面jar包 -->  
+        <dependency>  
+            <groupId>org.springframework</groupId>  
+            <artifactId>spring-aop</artifactId>  
+            <version>4.3.12.RELEASE</version>  
+        </dependency>  
+        <!-- aop依赖的jar包 -->  
+        <dependency>  
+            <groupId>org.apache.geronimo.bundles</groupId>  
+            <artifactId>aspectjweaver</artifactId>  
+            <version>1.6.8_2</version>  
+        </dependency>
+        <!-- MySQL连接池jar包 -->
+        <dependency>
+        	<groupId>mysql</groupId>
+        	<artifactId>mysql-connector-java</artifactId>
+        	<version>5.1.30</version>
+        </dependency>  
+        <!-- c3p0连接池jar包 -->  
+        <dependency>  
+            <groupId>com.mchange</groupId>  
+            <artifactId>c3p0</artifactId>  
+            <version>0.9.5-pre8</version>  
+        </dependency>  
+        <!-- c3p0依赖的jar包 -->  
+        <dependency>  
+            <groupId>com.mchange</groupId>  
+            <artifactId>mchange-commons-java</artifactId>  
+            <version>0.2.3.4</version>  
+        </dependency>  
+        <!-- 事务jar包 -->  
+        <dependency>  
+            <groupId>org.apache.servicemix.bundles</groupId>  
+            <artifactId>org.apache.servicemix.bundles.spring-tx</artifactId>  
+            <version>4.2.2.RELEASE_1</version>  
+        </dependency>  
+        <!-- 开发web项目的jar包 -->  
+        <dependency>  
+            <groupId>org.springframework</groupId>  
+            <artifactId>spring-web</artifactId>  
+            <version>4.3.12.RELEASE</version>  
+        </dependency>  
+        <!-- freemarker模板的jar包 -->  
+        <dependency>  
+            <groupId>org.freemarker</groupId>  
+            <artifactId>freemarker-gae</artifactId>  
+            <version>2.3.23</version>  
+        </dependency>   
+        <!-- 上传下载的jar包 -->  
+        <dependency>  
+            <groupId>commons-fileupload</groupId>  
+            <artifactId>commons-fileupload</artifactId>  
+            <version>1.2.2</version>  
+        </dependency>  
+        <!-- 上传下载依赖的jar包 -->  
+        <dependency>  
+            <groupId>commons-io</groupId>  
+            <artifactId>commons-io</artifactId>  
+            <version>2.2</version>  
+        </dependency>  
+        <dependency>  
+		    <groupId>javax.servlet</groupId>  
+		    <artifactId>javax.servlet-api</artifactId>  
+		    <version>3.0.1</version>  
+		    <scope>provided</scope>  
+		</dependency>  
+		<dependency>  
+		    <groupId>javax.servlet.jsp</groupId>  
+		    <artifactId>jsp-api</artifactId>  
+		    <version>2.1</version>  
+		    <scope>provided</scope>  
+		</dependency>  
+		<dependency>  
+		    <groupId>javax.servlet</groupId>  
+		    <artifactId>jstl</artifactId>  
+		    <version>1.2</version>  
+		</dependency>  
+    </dependencies> 
+  
+  
+</project>
