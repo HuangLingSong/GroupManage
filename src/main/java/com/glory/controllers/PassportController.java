@@ -11,16 +11,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/Passport")
 public class PassportController {
 
-    @RequestMapping("/login")
+    @RequestMapping("/Login")
     public String login() {
 
         return "passport/login";
     }
 
 
-    @RequestMapping("/register")
+    @RequestMapping("/Register")
     public String register() {
 
         return "passport/register";
     }
+
+    @RequestMapping("/Logout")
+    public String logout() {
+
+        return "passport/login";
+    }
+    @RequestMapping("/Forgot")
+    public String forgot() {
+
+        return "passport/forgot";
+    }
+
 }

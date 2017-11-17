@@ -63,38 +63,24 @@
         <div class="col-md-4">
 
 
-            <!-- Start login Form -->
-            <form action="javascript:void(null);" class="fh5co-form animate-box" data-animate-effect="fadeInLeft" id="form-signin">
-                <h2>Login</h2>
+            <!-- Start Forgot Password In Form -->
+            <form action="#" class="fh5co-form animate-box" data-animate-effect="fadeInLeft">
+                <h2>Forgot Password</h2>
                 <div class="form-group">
-                    <div class="form-notice">
-                        <!--<div class="alert alert-success" role="alert">Your info has been saved.</div>-->
-                        <!--<div class="alert alert-info" role="alert">Your info has been saved.</div>-->
-                        <!--<div class="alert alert-warning" role="alert">Your info has been saved.</div>-->
-                        <!--<div class="alert alert-danger" role="alert">Your info has been saved.</div>-->
-                    </div>
+                    <div class="alert alert-success" role="alert">Your email has been sent.</div>
                 </div>
                 <div class="form-group">
-                    <label for="email" class="sr-only">email</label>
-                    <input type="email" class="form-control" id="email" placeholder="email" autocomplete="off" name="email" required>
+                    <label for="email" class="sr-only">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Email" autocomplete="off">
                 </div>
                 <div class="form-group">
-                    <label for="password" class="sr-only">Password</label>
-                    <input type="password" class="form-control" id="password" placeholder="Password" autocomplete="off" name="password" required>
+                    <p><a href="/Passport/Login">Login </a> or <a href="/Passport/Register"> Register</a></p>
                 </div>
                 <div class="form-group">
-                    <label for="remember"><input type="checkbox" id="remember"> Remember Me</label>
-                </div>
-
-                <div class="form-group">
-                    <p>Not registered? <a href="/Passport/Register">Register</a> | <a href="/Passport/Forgot">Forgot Password?</a></p>
-                </div>
-
-                <div class="form-group">
-                    <input type="submit" value="LOGIN" class="btn btn-primary">
+                    <input type="submit" value="Send Email" class="btn btn-primary">
                 </div>
             </form>
-            <!-- END Sign In Form -->
+            <!-- END Forgot Password In Form -->
 
 
 
