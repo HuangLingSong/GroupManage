@@ -23,7 +23,8 @@ hs_err_pid*
 
 /target/
 .settings/
+.idea/
 .classpath
 .project
 myMaven.iml
-
+GroupManage.iml

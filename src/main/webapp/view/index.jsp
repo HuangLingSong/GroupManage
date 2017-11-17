@@ -19,7 +19,7 @@
 
 
     <!-- Favicon -->
-    {{stylesheet_link('favicon.ico')}}
+    <link rel="stylesheet" type="text/css" href="/public/favicon.ico">
     <style>
         .navbar-brand-char{
             font-size: 14px;
