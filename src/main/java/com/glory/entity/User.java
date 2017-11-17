@@ -9,7 +9,13 @@ public class User {
 
     private String username;
 
+    private String eamil;
+
     private String password;
+
+    private int roleId;
+
+    private int groupId;
 
     public int getId() {
         return id;
@@ -27,6 +33,14 @@ public class User {
         this.username = username;
     }
 
+    public String getEamil() {
+        return eamil;
+    }
+
+    public void setEamil(String eamil) {
+        this.eamil = eamil;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -35,4 +49,19 @@ public class User {
         this.password = password;
     }
 
+    public int getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
+    }
+
+    public int getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(int groupId) {
+        this.groupId = groupId;
+    }
 }

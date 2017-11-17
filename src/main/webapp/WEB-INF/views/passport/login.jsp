@@ -116,7 +116,7 @@
 <script src="/resources/plugins/backstretch/jquery.backstretch.min.js"></script>
 <script>
     $(function () {
-        $.backstretch("https://signposs1.oss-cn-shenzhen.aliyuncs.com/client/img/stock/splash/2.jpg");
+        $.backstretch("/resources/images/backgroundImg.jpg");
         var fromSignin = $('#form-signin');
         var check = true;
         var email;
@@ -149,7 +149,7 @@
             email = $.trim($('#email').val());
             var password = $.trim($('#password').val());
             if (check) {
-                $.ajax('/passport/login', {
+                $.ajax('/Passport/Login', {
                     data: {
                         email: email,
                         password: password,
