@@ -17,6 +17,8 @@ public class User {
 
     private int groupId;
 
+    private String createAt;
+
     public User() {
     }
 
@@ -72,5 +74,13 @@ public class User {
 
     public void setGroupId(int groupId) {
         this.groupId = groupId;
+    }
+
+    public String getCreateAt() {
+        return createAt;
+    }
+
+    public void setCreateAt(String createAt) {
+        this.createAt = createAt;
     }
 }

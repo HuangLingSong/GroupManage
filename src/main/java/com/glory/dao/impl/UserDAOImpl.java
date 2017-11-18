@@ -2,11 +2,15 @@ package com.glory.dao.impl;
 
 
 import com.glory.dao.UserDAO;
+import com.glory.entity.Group;
+import com.glory.entity.Role;
 import com.glory.entity.User;
 import com.glory.libraries.DBManager;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Monster on 2017/10/27.
@@ -22,7 +26,7 @@ public class UserDAOImpl implements UserDAO {
         try {
             String sql = "select *from t_users where username=? and password=?";
             ResultSet resultSet = dbManager.doQurey(sql, new Object[]{username, password});
-            if (resultSet.next()) {
+            while (resultSet.next()) {
                 user = new User();
                 user.setId(resultSet.getInt("id"));
                 user.setUsername(resultSet.getString("username"));
@@ -44,7 +48,7 @@ public class UserDAOImpl implements UserDAO {
         try {
             String sql = "select *from t_users where email =?";
             ResultSet resultSet = dbManager.doQurey(sql, new Object[]{email});
-            if (resultSet.next()) {
+            while (resultSet.next()) {
                 user = new User();
                 user.setId(resultSet.getInt("id"));
                 user.setEamil(resultSet.getString("email"));
@@ -66,8 +70,8 @@ public class UserDAOImpl implements UserDAO {
         dbManager = new DBManager();
         int resultSet = 0;
         try {
-            String sql = "insert into t_users (name,email,password) value (?,?,?)";
-            resultSet = dbManager.doUpdate(sql, new Object[]{user.getUsername(),user.getEamil(), user.getPassword()});
+            String sql = "insert into t_users (name,email,password,create_at) value (?,?,?,now())";
+            resultSet = dbManager.doUpdate(sql, new Object[]{user.getUsername(), user.getEamil(), user.getPassword()});
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -75,4 +79,31 @@ public class UserDAOImpl implements UserDAO {
         }
         return resultSet;
     }
+
+    public List<User> getUser() {
+
+        List<User> list = new ArrayList<User>();
+        dbManager = new DBManager();
+        try {
+            String sql = "select *from t_users ";
+            ResultSet resultSet = dbManager.doQurey(sql, null);
+            while (resultSet.next()) {
+                User user = new User();
+                user.setId(resultSet.getInt("id"));
+                user.setEamil(resultSet.getString("email"));
+                user.setUsername(resultSet.getString("name"));
+                user.setCreateAt(resultSet.getString("create_at"));
+                user.setRoleId(resultSet.getInt("role_id"));
+                user.setGroupId(resultSet.getInt("group_id"));
+                list.add(user);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            dbManager.CloseConnection();
+        }
+        return list;
+    }
+
+
 }

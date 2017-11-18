@@ -11,7 +11,7 @@
 <head>
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
-    <title>Home</title>
+    <title>人员分组</title>
     <meta name="keywords" content="HTML5 Bootstrap 3 Admin Template UI Theme">
     <meta name="description" content="Fusion - A Responsive HTML5 Admin UI Template Theme">
     <meta name="author" content="AdminDesigns">
@@ -115,7 +115,7 @@
                 <li> <a class="accordion-toggle" href="#sideAccount"><span class="glyphicons glyphicons-keys"></span><span class="sidebar-title">系统管理</span><span class="caret"></span></a>
                     <ul id="sideAccount" class="nav sub-nav" style="">
                         <li><a class="ajax-disable" href="/User/List"><span class="glyphicons glyphicons-keys"></span> 人员列表 </a></li>                    <li class="divider"></li>
-                        <li><a class="ajax-disable" href="/User/Group"><span class="glyphicons glyphicons-keys"></span> 人员分组 </a></li>                      <li class="divider"></li>
+                        <li><a class="ajax-disable" href="/account/group"><span class="glyphicons glyphicons-keys"></span> 人员分组 </a></li>                      <li class="divider"></li>
                         <li><a class="ajax-disable" href="/account/groupaccess"><span class="glyphicons glyphicons-keys"></span> 人员权限 </a></li>          </ul>
                 </li>
                 <li> <a class="accordion-toggle" href="#sideAccount1"><span class="glyphicons glyphicons-keys"></span><span class="sidebar-title">人员管理</span><span class="caret"></span></a>
