@@ -11,4 +11,7 @@ public interface GroupDAO {
 
     public List<Group> getGroup();
 
+
+    public int create(Group group);
+
 }

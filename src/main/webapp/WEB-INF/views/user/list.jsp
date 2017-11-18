@@ -25,8 +25,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css" href="/resources/bootstrap-3.3.7/css/bootstrap.css">
     <!-- Theme CSS -->
-    <link rel="stylesheet" type="text/css" href="https://signposs1.oss-cn-shenzhen.aliyuncs.com/console/css/vendor.css">
-    <link rel="stylesheet" type="text/css" href="https://signposs1.oss-cn-shenzhen.aliyuncs.com/client/css/theme.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/vendor.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/theme.css">
 
 
     <!-- Favicon -->
@@ -78,7 +78,7 @@
             <div class="media">
                 <a class="pull-left" href="#">
                     <div class="media-object border border-purple br64 bw2 p2">
-                        <img class="br64" alt="...">
+                        <img class="br64" src="/resources/images/portrait.jpg" alt="...">
                     </div>
                 </a>
                 <div class="mobile-link"><span class="glyphicons glyphicons-show_big_thumbnails"></span></div>
@@ -131,16 +131,19 @@
                         <li><a class="ajax-disable" href="/Group/List"><span class="glyphicons glyphicons-keys"></span>
                             人员分组 </a></li>
                         <li class="divider"></li>
-                        <li><a class="ajax-disable" href="/account/groupaccess"><span
-                                class="glyphicons glyphicons-keys"></span> 人员权限 </a></li>
+                        <%--<li><a class="ajax-disable" href="/account/groupaccess"><span--%>
+                        <%--class="glyphicons glyphicons-keys"></span> 人员权限 </a></li>--%>
                     </ul>
                 </li>
                 <li><a class="accordion-toggle" href="#sideAccount1"><span
-                        class="glyphicons glyphicons-keys"></span><span class="sidebar-title">人员管理</span><span
+                        class="glyphicons glyphicons-keys"></span><span class="sidebar-title">我的小组</span><span
                         class="caret"></span></a>
                     <ul id="sideAccount1" class="nav sub-nav" style="">
                         <li><a class="ajax-disable" href="/account/list"><span
                                 class="glyphicons glyphicons-keys"></span> 小组成员 </a></li>
+                        <li class="divider"></li>
+                        <li><a class="ajax-disable" href="/Group/Create"><span
+                                class="glyphicons glyphicons-keys"></span> 创建小组 </a></li>
                         <li class="divider"></li>
                         <li><a class="ajax-disable" href="/account/group"><span
                                 class="glyphicons glyphicons-keys"></span> 添加/删除成员 </a></li>
@@ -173,6 +176,7 @@
                             <table class="table table-hover">
                                 <thead>
                                 <th style="width:1%" nowrap=""></th>
+                                <th style="width:1%" nowrap="">ID</th>
                                 <th style="width:1%" nowrap="">呢称</th>
                                 <th style="text-align: left;width:1%" nowrap="">Email</th>
                                 <th style="width:1%" nowrap="">分组</th>
@@ -186,7 +190,7 @@
                                 <%
                                     List<User> userList = (List<User>) request.getAttribute("users");
                                     List<Group> groupList = (List<Group>) request.getAttribute("groups");
-                                    List<Role>  roleList= (List<Role>) request.getAttribute("roles");
+                                    List<Role> roleList = (List<Role>) request.getAttribute("roles");
                                     if (userList != null) {
                                         for (int i = 0; i < userList.size(); i++) {
                                             User userItem = userList.get(i);
@@ -194,28 +198,50 @@
                                 %>
 
                                 <tr>
-                                    <td nowrap="" class="small"><%= i+1%><img src="" width="50"/></td>
-                                    <td class="small"><%= userItem.getUsername() %></td>
-                                    <td class="small"><%= userItem.getEamil()%></td>
-                                    <td nowrap=""><select class="multiselect" id="group_{{i['mp_user_wx_openid']}}">
-                                        <% if (groupList!=null){ for (int j=0;j<groupList.size();j++){ Group groupItem = groupList.get(j); %>
-                                        <option value="<%= groupItem.getId()%>" <% if (userItem.getGroupId()==groupItem.getId()) {%> selected="selected" <%}%> > <%= groupItem.getGroup() %></option>
-                                        <%}}%>
+                                    <td nowrap="" class="small"><%= i + 1%><img src="" width="50"/></td>
+                                    <td nowrap="" class="small"><%= userItem.getId() %><img src="" width="50"/></td>
+                                    <td class="small"><%= userItem.getUsername() %>
+                                    </td>
+                                    <td class="small"><%= userItem.getEamil()%>
+                                    </td>
+                                    <td nowrap="">
+                                        <select class="multiselect" id="group_<%= userItem.getId()%>">
+                                            <%if (userItem.getGroupId()==0) {%> <option value='0' selected="selected"> 没有加入小组 </option>  <%}%>
+                                        <% if (groupList != null) {
+                                            for (int j = 0; j < groupList.size(); j++) {
+                                                Group groupItem = groupList.get(j); %>
+                                        <option value="<%= groupItem.getId()%>" <% if (userItem.getGroupId() == groupItem.getId()) {%> selected="selected" <%}%> ><%= groupItem.getGroup() %></option>
+                                        <%
+                                                }
+                                            }
+                                        %>
                                     </select></td>
                                     <td nowrap>
-                                        <select class="multiselect" id="status_{{i['mp_user_wx_openid']}}">
-                                            <% if (roleList!=null){ for (int j=0;j<roleList.size();j++){ Role roleTtem = roleList.get(j); %>
+                                        <select class="multiselect" id="role_<%= userItem.getId()%>">
+                                            <% if (roleList != null) {
+                                                for (int j = 0; j < roleList.size(); j++) {
+                                                    Role roleTtem = roleList.get(j); %>
 
-                                            <option value="<%= roleTtem.getId()%>" <% if (userItem.getRoleId()==roleTtem.getId()) {%> selected="selected" <%}%> ><%= roleTtem.getRole() %></option>
+                                            <option value="<%= roleTtem.getId()%>" <% if (userItem.getRoleId() == roleTtem.getId()) {%>
+                                                    selected="selected" <%}%> ><%= roleTtem.getRole() %>
+                                            </option>
 
-                                            <%}}%>
+                                            <%
+                                                    }
+                                                }
+                                            %>
                                         </select>
                                     </td>
 
-                                    <td nowrap class="small"><%= userItem.getCreateAt()%></td>
+                                    <td nowrap class="small"><%= userItem.getCreateAt()%>
+                                    </td>
                                     <td nowrap>
-                                        <button type="button" class="btn btn-default btn-xs editBtn" data-id="<%= userItem.getId()%>">编辑</button>
-                                        <button type="button" class="btn btn-default btn-xs deleteBtn" data-id="<%= userItem.getId()%>">删除</button>
+                                        <button type="button" class="btn btn-default btn-xs editBtn"
+                                                data-id="<%= userItem.getId()%>">编辑
+                                        </button>
+                                        <button type="button" class="btn btn-default btn-xs deleteBtn"
+                                                data-id="<%= userItem.getId()%>">删除
+                                        </button>
                                     </td>
                                 </tr>
 
@@ -254,9 +280,65 @@
 <script type="text/javascript">
     jQuery(document).ready(function () {
 
-        Core.init();
+        $('.editBtn').click(function () {
+
+                $('.btn').attr('disabled','disabled');
+                var id = $(this).attr("data-id");
+                var groupId = $('#group_' + id).val();
+                var roleId = $('#role_' + id).val();
+                    if (confirm("确定编辑人员")){
+                        $.ajax('/User/EditForm', {
+                            data: {
+                                id: id,
+                                groupId: groupId,
+                                roleId: roleId
+                            },
+                            type: 'post',
+                            datype: 'JSON',
+                            success: function (data) {
+                                if (data.code == 0) {
+                                    alert("编辑成功")
+                                    location.replace("/User/List")
+                                } else {
+                                    alert("编辑失败")
+                                }
+                            },
+                            error: function () {
+
+                            }
+
+                        })
+                    }
+
+            })
 
 
+
+    $('.deleteBtn').click(function () {
+
+        var id = $(this).attr("data-id");
+
+        $.ajax('/User/DeleteForm', {
+            data: {
+                id: id,
+            },
+            type: 'post',
+            datype: 'json',
+            success: function (data) {
+                if (data.code == 0) {
+
+                    location.replace("/User/List")
+                } else {
+                    alert("删除失败")
+                }
+            },
+            error: function () {
+                alert("删除失败")
+            }
+
+        });
+    });
+    Core.init();
     });
 </script>
 

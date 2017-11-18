@@ -20,8 +20,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css" href="/resources/bootstrap-3.3.7/css/bootstrap.css">
     <!-- Theme CSS -->
-    <link rel="stylesheet" type="text/css" href="https://signposs1.oss-cn-shenzhen.aliyuncs.com/console/css/vendor.css">
-    <link rel="stylesheet" type="text/css" href="https://signposs1.oss-cn-shenzhen.aliyuncs.com/client/css/theme.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/vendor.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/theme.css">
 
 
     <!-- Favicon -->
@@ -72,7 +72,7 @@
             <div class="media">
                 <a class="pull-left" href="#">
                     <div class="media-object border border-purple br64 bw2 p2">
-                        <img class="br64"  alt="...">
+                        <img class="br64"  src="/resources/images/portrait.jpg" alt="...">
                     </div>
                 </a>
                 <div class="mobile-link"> <span class="glyphicons glyphicons-show_big_thumbnails"></span> </div>
@@ -116,11 +116,13 @@
                     <ul id="sideAccount" class="nav sub-nav" style="">
                         <li><a class="ajax-disable" href="/User/List"><span class="glyphicons glyphicons-keys"></span> 人员列表 </a></li>                    <li class="divider"></li>
                         <li><a class="ajax-disable" href="/Group/List"><span class="glyphicons glyphicons-keys"></span> 人员分组 </a></li>                      <li class="divider"></li>
-                        <li><a class="ajax-disable" href="/account/groupaccess"><span class="glyphicons glyphicons-keys"></span> 人员权限 </a></li>          </ul>
+                        <%--<li><a class="ajax-disable" href="/account/groupaccess"><span class="glyphicons glyphicons-keys"></span> 人员权限 </a></li>          --%>
+                    </ul>
                 </li>
-                <li> <a class="accordion-toggle" href="#sideAccount1"><span class="glyphicons glyphicons-keys"></span><span class="sidebar-title">人员管理</span><span class="caret"></span></a>
+                <li> <a class="accordion-toggle" href="#sideAccount1"><span class="glyphicons glyphicons-keys"></span><span class="sidebar-title">我的小组</span><span class="caret"></span></a>
                     <ul id="sideAccount1" class="nav sub-nav" style="">
                         <li><a class="ajax-disable" href="/account/list"><span class="glyphicons glyphicons-keys"></span> 小组成员 </a></li>                    <li class="divider"></li>
+                        <li><a class="ajax-disable" href="/Group/Create"><span class="glyphicons glyphicons-keys"></span> 创建小组 </a></li>                      <li class="divider"></li>
                         <li><a class="ajax-disable" href="/account/group"><span class="glyphicons glyphicons-keys"></span> 添加/删除成员 </a></li>                      <li class="divider"></li>
                     </ul>
                 </li>

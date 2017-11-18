@@ -11,6 +11,6 @@ public interface GroupService {
 
     public List<Group> getGroup();
 
-
+    public int create(Group group);
 
 }

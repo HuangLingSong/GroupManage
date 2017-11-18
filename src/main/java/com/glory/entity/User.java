@@ -28,6 +28,12 @@ public class User {
         this.password = password;
     }
 
+    public User(int id, int roleId, int groupId) {
+        this.id = id;
+        this.roleId = roleId;
+        this.groupId = groupId;
+    }
+
     public int getId() {
         return id;
     }

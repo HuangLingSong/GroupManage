@@ -19,4 +19,8 @@ public interface UserService {
 
     public List<User> getUser();
 
+    public int delete(int id);
+
+    public int edit(User user);
+
 }

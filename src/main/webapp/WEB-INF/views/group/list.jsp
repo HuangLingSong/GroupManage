@@ -1,4 +1,7 @@
 <%@ page import="com.glory.entity.User" %>
+<%@ page import="com.glory.entity.Group" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.sun.javafx.scene.paint.GradientUtils" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%
     User user= (User) session.getAttribute("User");
@@ -20,8 +23,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css" href="/resources/bootstrap-3.3.7/css/bootstrap.css">
     <!-- Theme CSS -->
-    <link rel="stylesheet" type="text/css" href="https://signposs1.oss-cn-shenzhen.aliyuncs.com/console/css/vendor.css">
-    <link rel="stylesheet" type="text/css" href="https://signposs1.oss-cn-shenzhen.aliyuncs.com/client/css/theme.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/vendor.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/theme.css">
 
 
     <!-- Favicon -->
@@ -72,7 +75,7 @@
             <div class="media">
                 <a class="pull-left" href="#">
                     <div class="media-object border border-purple br64 bw2 p2">
-                        <img class="br64"  alt="...">
+                        <img class="br64"  src="/resources/images/portrait.jpg" alt="...">
                     </div>
                 </a>
                 <div class="mobile-link"> <span class="glyphicons glyphicons-show_big_thumbnails"></span> </div>
@@ -116,12 +119,16 @@
                     <ul id="sideAccount" class="nav sub-nav" style="">
                         <li><a class="ajax-disable" href="/User/List"><span class="glyphicons glyphicons-keys"></span> 人员列表 </a></li>                    <li class="divider"></li>
                         <li><a class="ajax-disable" href="/Group/List"><span class="glyphicons glyphicons-keys"></span> 人员分组 </a></li>                      <li class="divider"></li>
-                        <li><a class="ajax-disable" href="/account/groupaccess"><span class="glyphicons glyphicons-keys"></span> 人员权限 </a></li>          </ul>
+                        <%--<li><a class="ajax-disable" href="/account/groupaccess"><span class="glyphicons glyphicons-keys"></span> 人员权限 </a></li>          --%>
+                    </ul>
                 </li>
-                <li> <a class="accordion-toggle" href="#sideAccount1"><span class="glyphicons glyphicons-keys"></span><span class="sidebar-title">人员管理</span><span class="caret"></span></a>
+                <li> <a class="accordion-toggle" href="#sideAccount1"><span class="glyphicons glyphicons-keys"></span><span class="sidebar-title">我的小组</span><span class="caret"></span></a>
                     <ul id="sideAccount1" class="nav sub-nav" style="">
                         <li><a class="ajax-disable" href="/account/list"><span class="glyphicons glyphicons-keys"></span> 小组成员 </a></li>                    <li class="divider"></li>
-                        <li><a class="ajax-disable" href="/account/group"><span class="glyphicons glyphicons-keys"></span> 添加/删除成员 </a></li>                      <li class="divider"></li>
+                        <li><a class="ajax-disable" href="/Group/Create"><span class="glyphicons glyphicons-keys"></span> 创建小组 </a></li>                      <li class="divider">
+                        <li><a class="ajax-disable" href="/account/group"><span class="glyphicons glyphicons-keys"></span> 添加/删除成员 </a></li>                      <li class="divider">
+
+                    </li>
                     </ul>
                 </li>
 
@@ -129,6 +136,117 @@
         </div>
     </aside>  <!-- Start: Content -->
     <%--<?php echo $this->getContent(); ?>--%>
+    <section id="content_wrapper">
+        <div id="topbar">
+            <div class="topbar-left">
+                <ol class="breadcrumb">
+                    <li class="crumb-active"><a href="#">组列表</a></li>
+                    <li class="crumb-icon"><a href="/"><span class="glyphicon glyphicon-home"></span></a></li>
+                    <li class="crumb-link"><a href="/">首页</a></li>
+                </ol>
+            </div>
+        </div>
+        <div id="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel">
+                        <div class="panel-heading"><span class="panel-title"> <span
+                                class="glyphicons glyphicons-keys"></span> 组列表 </span></div>
+                        <div class="panel-body">
+                            <table class="table table-hover">
+                                <thead>
+                                <th style="width:1%" nowrap=""></th>
+                                <th style="width:1%" nowrap="">ID</th>
+                                <th style="width:1%" nowrap="">组名</th>
+                                <th style="text-align: left;width:1%" nowrap="">组长/成员</th>
+                                <%--<th style="width:1%" nowrap="">成员</th>--%>
+                                <%--<th style="width:1%" nowrap=""></th>--%>
+                                <%--<th style="width:1%" nowrap="">审批项目管理员账号</th>--%>
+                                <th style="width:1%" nowrap="">创建时间</th>
+                                <th style="width:1%" nowrap="">操作</th>
+                                </thead>
+
+                                <tbody>
+                                <%
+                                    List<User> userList = (List<User>) request.getAttribute("users");
+                                    List<Group> groupList = (List<Group>) request.getAttribute("groups");
+
+                                    if (groupList != null) {
+                                        for (int i = 0; i < groupList.size(); i++) {
+                                            Group groupItem = groupList.get(i);
+
+                                %>
+
+                                <tr>
+                                    <td nowrap="" class="small"><%= i + 1%><img src="" width="50"/></td>
+                                    <td nowrap="" class="small"><%= groupItem.getId() %><img src="" width="50"/></td>
+                                    <td class="small"><%= groupItem.getGroup() %>
+                                    </td>
+                                    <%--<td class="small"><%= userItem.getEamil()%>--%>
+                                    </td>
+                                    <td nowrap="">
+                                        <select class="multiselect" id="group_{{i['mp_user_wx_openid']}}">
+                                            <option value="" selected="selected"> <%= groupItem.getLeader() %></option>
+                                        <% if (userList != null) {
+                                                for (int j = 0; j < userList.size(); j++) {
+                                                    User userItem = userList.get(i);
+                                                if (userItem.getGroupId()== groupItem.getId()){  %>
+
+                                            <option value="<%= userItem.getId() %>"><%= userItem.getUsername()%>   </option>
+
+                                        <%
+                                            } }}
+                                        %>
+                                        </select>
+                                    </td>
+                                    <%--<td nowrap>--%>
+                                        <%--<select class="multiselect" id="status_{{i['mp_user_wx_openid']}}">--%>
+                                            <%--<% if (roleList != null) {--%>
+                                                <%--for (int j = 0; j < roleList.size(); j++) {--%>
+                                                    <%--Role roleTtem = roleList.get(j); %>--%>
+
+                                            <%--<option value="<%= roleTtem.getId()%>" <% if (userItem.getRoleId() == roleTtem.getId()) {%> selected="selected" <%}%> ><%= roleTtem.getRole() %></option>--%>
+
+                                            <%--<%--%>
+                                                    <%--}--%>
+                                                <%--}--%>
+                                            <%--%>--%>
+                                        <%--</select>--%>
+                                    <%--</td>--%>
+
+                                    <td nowrap class="small"><%= groupItem.getCreateAt()%>
+                                    </td>
+                                    <td nowrap>
+                                        <%--<button type="button" class="btn btn-default btn-xs editBtn" onclick="edit()"--%>
+                                                <%--data-id="<%= groupItem.getId()%>">编辑--%>
+                                        <%--</button>--%>
+                                        <button type="button" class="btn btn-default btn-xs deleteBtn"
+                                                data-id="<%= groupItem.getId()%>">删除
+                                        </button>
+                                    </td>
+                                </tr>
+
+                                <%
+                                        }
+                                    }
+                                %>
+
+                                </tbody>
+                            </table>
+
+                            <div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
 </div>
 <!-- End #Main -->
 <!-- jQuery -->
@@ -146,6 +264,9 @@
     jQuery(document).ready(function () {
 
         Core.init();
+
+
+
 
 
 

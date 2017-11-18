@@ -105,5 +105,34 @@ public class UserDAOImpl implements UserDAO {
         return list;
     }
 
+    @Override
+    public int delete(int id) {
+        dbManager = new DBManager();
+        int resultSet = 0;
+        try {
+            String sql = "delete from t_users where id = ?";
+            resultSet = dbManager.doUpdate(sql, new Object[]{id});
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            dbManager.CloseConnection();
+        }
+        return resultSet;
+    }
+
+    public int edit(User user){
+        dbManager = new DBManager();
+        int resultSet = 0;
+        try {
+            String sql = "UPDATE t_users set role_id= ?,group_id = ? WHERE id = ?";
+            resultSet = dbManager.doUpdate(sql, new Object[]{user.getRoleId(),user.getGroupId(),user.getId()});
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            dbManager.CloseConnection();
+        }
+        return resultSet;
+    }
+
 
 }

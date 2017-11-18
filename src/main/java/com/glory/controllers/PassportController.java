@@ -113,9 +113,7 @@ public class PassportController {
     }
 
     @RequestMapping(value = "/ForgotForm", method = RequestMethod.POST)
-    public
-    @ResponseBody
-    ResponseJson forgotForm(@RequestParam("email") String email) {
+    public @ResponseBody ResponseJson forgotForm(@RequestParam("email") String email) {
 
         ResponseJson responseJson;
 

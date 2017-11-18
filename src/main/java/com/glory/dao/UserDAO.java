@@ -1,8 +1,5 @@
 package com.glory.dao;
 
-
-import com.glory.entity.Group;
-import com.glory.entity.Role;
 import com.glory.entity.User;
 
 import java.util.List;
@@ -20,6 +17,8 @@ public interface UserDAO {
 
     public List<User> getUser();
 
+    public int delete(int id);
 
+    public int edit(User user);
 
 }

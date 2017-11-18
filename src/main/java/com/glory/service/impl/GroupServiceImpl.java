@@ -17,4 +17,8 @@ public class GroupServiceImpl implements GroupService {
     public List<Group> getGroup(){
         return groupDAO.getGroup();
     }
+
+    public int create(Group group){
+        return groupDAO.create(group);
+    }
 }
