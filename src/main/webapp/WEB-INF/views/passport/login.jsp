@@ -159,7 +159,7 @@
                     success: function (data) {
                         if (data.code == 0) {
                             $('.form-notice').html('<div class="alert alert-success" role="alert">Login was successful.</div>');
-                            location.replace('/');
+                            location.replace('/Index/Index');
                         }else {
                             $('.form-notice').html('<div class="alert alert-danger" role="alert">Sign in has failed.</div>');
                         }

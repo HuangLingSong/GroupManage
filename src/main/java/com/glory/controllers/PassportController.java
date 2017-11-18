@@ -8,10 +8,11 @@ import com.glory.service.MessageService;
 import com.glory.service.UserService;
 import com.glory.service.impl.MessageServiceImpl;
 import com.glory.service.impl.UserServiceImpl;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+
+
+import javax.servlet.http.HttpSession;
 
 /**
  * Created by Monster on 2017/11/17.
@@ -27,7 +28,7 @@ public class PassportController {
     private MessageService messageService = new MessageServiceImpl();
 
     @RequestMapping(value = "/Login", method = RequestMethod.GET)
-    public String login() {
+    public String login()  {
         return "passport/login";
     }
 
@@ -37,8 +38,9 @@ public class PassportController {
     }
 
     @RequestMapping("/Logout")
-    public String logout() {
-        return "passport/login";
+    public String logout(HttpSession httpSession) {
+        httpSession.removeAttribute("User");
+        return "redirect:Login";
     }
 
     @RequestMapping(value = "/Forgot", method = RequestMethod.GET)
@@ -64,7 +66,7 @@ public class PassportController {
     @RequestMapping(value = "/LoginForm", method = RequestMethod.POST)
     public
     @ResponseBody
-    ResponseJson loginForm(@RequestParam("email") String email, @RequestParam("password") String passwd, ModelMap modelMap) {
+    ResponseJson loginForm(@RequestParam("email") String email, @RequestParam("password") String passwd, HttpSession httpSession) {
         ResponseJson responseJson;
         passwd = MD5Utils.MD5(passwd);
 
@@ -75,7 +77,7 @@ public class PassportController {
             if (passwd.equals(user.getPassword())) {
                 responseJson = new ResponseJson(0, null, "登录成功");
                 user.setPassword("");
-                modelMap.put("User", user);
+                httpSession.setAttribute("User", user);
             } else {
                 responseJson = new ResponseJson(103, null, "密码错误");
             }

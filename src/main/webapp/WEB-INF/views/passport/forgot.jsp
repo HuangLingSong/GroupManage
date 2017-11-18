@@ -138,7 +138,7 @@
 
         fromSignin.submit(function (event) {
             email = $.trim($('#email').val());
-           
+
             if (check) {
                 $.ajax('/Passport/ForgotForm', {
                     data: {
