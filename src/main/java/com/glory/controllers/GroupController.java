@@ -35,6 +35,11 @@ public class GroupController {
 
     @RequestMapping(value = "Create",method = RequestMethod.GET)
     public String create(HttpServletRequest request){
+
+        List<Group> groups  = groupService.getGroup();
+        if (groups!=null){
+            request.setAttribute("groups", groups);
+        }
         return "group/create";
     }
 
