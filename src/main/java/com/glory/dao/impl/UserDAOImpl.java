@@ -38,17 +38,20 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public User getUserByName(String username) {
+    public User getUserByEmail(String email) {
         User user = null;
         dbManager = new DBManager();
         try {
-            String sql = "select *from t_users where username=?";
-            ResultSet resultSet = dbManager.doQurey(sql, new Object[]{username});
+            String sql = "select *from t_users where email =?";
+            ResultSet resultSet = dbManager.doQurey(sql, new Object[]{email});
             if (resultSet.next()) {
                 user = new User();
                 user.setId(resultSet.getInt("id"));
-                user.setUsername(resultSet.getString("username"));
+                user.setEamil(resultSet.getString("email"));
+                user.setUsername(resultSet.getString("name"));
                 user.setPassword(resultSet.getString("password"));
+                user.setRoleId(resultSet.getInt("role_id"));
+                user.setGroupId(resultSet.getInt("group_id"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -59,12 +62,12 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public int signup(User user) {
+    public int register(User user) {
         dbManager = new DBManager();
         int resultSet = 0;
         try {
-            String sql = "insert into t_users (username,password) value (?,?,?)";
-            resultSet = dbManager.doUpdate(sql, new Object[]{user.getUsername(), user.getPassword()});
+            String sql = "insert into t_users (name,email,password) value (?,?,?)";
+            resultSet = dbManager.doUpdate(sql, new Object[]{user.getUsername(),user.getEamil(), user.getPassword()});
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

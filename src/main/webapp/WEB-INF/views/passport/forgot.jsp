@@ -64,10 +64,13 @@
 
 
             <!-- Start Forgot Password In Form -->
-            <form action="#" class="fh5co-form animate-box" data-animate-effect="fadeInLeft">
+            <form action="javascript:void(null);" class="fh5co-form animate-box" data-animate-effect="fadeInLeft" id="form-forgot" >
                 <h2>Forgot Password</h2>
                 <div class="form-group">
-                    <div class="alert alert-success" role="alert">Your email has been sent.</div>
+                    <div class="form-notice">
+
+                    </div>
+                    <%--<div class="alert alert-success" role="alert">Your email has been sent.</div>--%>
                 </div>
                 <div class="form-group">
                     <label for="email" class="sr-only">Email</label>
@@ -103,24 +106,26 @@
 <script>
     $(function () {
         $.backstretch("/resources/images/backgroundImg.jpg");
-        var fromSignin = $('#form-signin');
-        var check = true;
+        var fromSignin = $('#form-forgot');
+        var check = false;
         var email;
 
         $('#email').blur(function () {
             email = $.trim($('#email').val());
-            if (username.length > 0) {
-                $.ajax('/passport/checkUser', {
+            if (email.length > 0) {
+                $.ajax('/Passport/GetUser', {
                     data: {
                         email: email,
                     },
                     type: 'post',
                     dataType: 'json',
                     success: function (data) {
-                        if (data.code == 102 || data.data == null) {
-                            $('.form-notice').html('<div class="alert alert-danger" role="alert">没有该用户</div>');
+//                        alert(data.code)
+                        if (data.code == 102) {
+                            $('.form-notice').html('<div class="alert alert-danger" role="alert">Email is invalid or already taken.</div>');
                             check = false;
-                        }  else {
+                            return false;
+                        }else {
                             $('.form-notice').html('');
                             check = true;
                         }
@@ -133,25 +138,25 @@
 
         fromSignin.submit(function (event) {
             email = $.trim($('#email').val());
-            var password = $.trim($('#password').val());
+           
             if (check) {
-                $.ajax('/passport/login', {
+                $.ajax('/Passport/ForgotForm', {
                     data: {
                         email: email,
-                        password: password,
+
                     },
                     type: 'post',
                     dataType: 'json',
                     success: function (data) {
                         if (data.code == 0) {
-                            $('.form-notice').html('<div class="alert alert-success" role="alert">登录成功.</div>');
-                            location.replace('/');
+                            $('.form-notice').html('<div class="alert alert-success" role="alert">Your email has been sent.</div>');
+                            location.replace('/Passport/Login');
                         }else {
-                            $('.form-notice').html('<div class="alert alert-danger" role="alert">登录失败.</div>');
+                            $('.form-notice').html('<div class="alert alert-danger" role="alert">Failed to add message.</div>');
                         }
                     },
                     error: function () {
-                        $('.form-notice').html('<div class="alert alert-danger" role="alert">登录失败.</div>');
+                        $('.form-notice').html('<div class="alert alert-danger" role="alert">Failed to add message.</div>');
                     }
                 });
             }

@@ -9,8 +9,8 @@ public interface UserService {
 
     public User login(String username, String password);
 
-    public User getUserByName(String username);
+    public User getUserByEmail(String email);
 
-    public int signup(User user);
+    public int register(User user);
 
 }

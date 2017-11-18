@@ -17,6 +17,15 @@ public class User {
 
     private int groupId;
 
+    public User() {
+    }
+
+    public User(String username, String eamil, String password) {
+        this.username = username;
+        this.eamil = eamil;
+        this.password = password;
+    }
+
     public int getId() {
         return id;
     }

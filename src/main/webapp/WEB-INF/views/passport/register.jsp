@@ -65,7 +65,7 @@
 
             <!-- Start Sign Up Form -->
             <!--<form action="/passport/signup" class="fh5co-form animate-box" data-animate-effect="fadeInLeft" method="post">-->
-            <form action="javascript:void(null);" class="fh5co-form animate-box" data-animate-effect="fadeInLeft" id="form-signup">
+            <form action="javascript:void(null);" class="fh5co-form animate-box" data-animate-effect="fadeInLeft" id="form-register">
                 <h2>Register</h2>
                 <div class="form-group">
                     <div class="form-notice">
@@ -77,7 +77,7 @@
                 </div>
                 <div class="form-group">
                     <label for="name" class="sr-only">Name</label>
-                    <input type="text" class="form-control" id="name" placeholder="Name" autocomplete="off">
+                    <input type="text" class="form-control" id="name" placeholder="Name" autocomplete="off" required>
                 </div>
                 <div class="form-group">
                     <label for="email" class="sr-only">Email</label>
@@ -89,8 +89,7 @@
                 </div>
                 <div class="form-group">
                     <label for="re-password" class="sr-only">Re-type Password</label>
-                    <input type="password" class="form-control" id="re-password" placeholder="Re-type Password" autocomplete="off"
-                           required>
+                    <input type="password" class="form-control" id="re-password" placeholder="Re-type Password" autocomplete="off" required>
                 </div>
                 <div class="form-group">
                     <label for="remember"><input type="checkbox" id="remember"> Remember Me</label>
@@ -132,7 +131,7 @@
         var password;
         var rePassword;
 
-        var fromSignup = $('#form-signup');
+        var fromSignup = $('#form-register');
         $('#name').blur(function () {
             name = $.trim($('#name').val());
             if (name.length > 20) {
@@ -147,7 +146,7 @@
         $('#email').blur(function () {
             email = $.trim($('#email').val());
             if (email.length > 0) {
-                $.ajax('/passport/getuserlist', {
+                $.ajax('/Passport/GetUser', {
                     data: {
                         email: email,
                     },
@@ -178,7 +177,7 @@
                 $('.form-notice').html('<div class="alert alert-danger" role="alert">Passwords does not match.</div>');
                 return false;
             } else {
-                $.ajax('/passport/signup', {
+                $.ajax('/Passport/RegisterForm', {
                     data: {
                         name: name,
                         email: email,
@@ -189,7 +188,7 @@
                     success: function (data) {
                         if (data.code == 0) {
                             $('.form-notice').html('<div class="alert alert-success" role="alert">Sign up was successful.</div>');
-                            location.href = "/passport/signin";
+                            location.href = "/Passport/Login";
                             header('Content-Type: text/html; charset=utf-8');
                         }
                     },

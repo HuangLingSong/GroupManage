@@ -1,5 +1,6 @@
+<%@ page import="com.glory.entity.User" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
-
+<% User user= (User) session.getAttribute("User"); %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +20,7 @@
 
 
     <!-- Favicon -->
-    <link rel="stylesheet" type="text/css" href="/resources/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="/resources/logo.png">
     <style>
         .navbar-brand-char{
             font-size: 14px;
@@ -71,7 +72,7 @@
                 </a>
                 <div class="mobile-link"> <span class="glyphicons glyphicons-show_big_thumbnails"></span> </div>
                 <div class="media-body">
-                    <h5 class="media-heading mt5 mbn fw700 cursor">黄凌淞<span class="caret ml5"></span></h5>
+                    <h5 class="media-heading mt5 mbn fw700 cursor">qqqq<span class="caret ml5"></span></h5>
                     <div class="media-links fs11" style="margin-top: 10px;"><a   href="#">菜单</a>　<i class="fa fa-circle text-muted fs3 p8 va-m"></i><a href="/Passport/Logout">退出</a></div>
                 </div>
             </div>
@@ -122,7 +123,7 @@
             </ul>
         </div>
     </aside>  <!-- Start: Content -->
-    <?php echo $this->getContent(); ?>
+    <%--<?php echo $this->getContent(); ?>--%>
 </div>
 <!-- End #Main -->
 <!-- jQuery -->
@@ -140,6 +141,7 @@
     jQuery(document).ready(function () {
 
         Core.init();
+
 
 
     });

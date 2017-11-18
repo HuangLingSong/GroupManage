@@ -64,7 +64,7 @@
 
 
             <!-- Start login Form -->
-            <form action="javascript:void(null);" class="fh5co-form animate-box" data-animate-effect="fadeInLeft" id="form-signin">
+            <form action="javascript:void(null);" class="fh5co-form animate-box" data-animate-effect="fadeInLeft" id="form-login">
                 <h2>Login</h2>
                 <div class="form-group">
                     <div class="form-notice">
@@ -117,14 +117,14 @@
 <script>
     $(function () {
         $.backstretch("/resources/images/backgroundImg.jpg");
-        var fromSignin = $('#form-signin');
+        var fromSignin = $('#form-login');
         var check = true;
         var email;
 
         $('#email').blur(function () {
             email = $.trim($('#email').val());
-            if (username.length > 0) {
-                $.ajax('/passport/checkUser', {
+            if (email.length > 0) {
+                $.ajax('/Passport/GetUser', {
                     data: {
                         email: email,
                     },
@@ -132,7 +132,7 @@
                     dataType: 'json',
                     success: function (data) {
                         if (data.code == 102 || data.data == null) {
-                            $('.form-notice').html('<div class="alert alert-danger" role="alert">没有该用户</div>');
+                            $('.form-notice').html('<div class="alert alert-danger" role="alert">Email is invalid or already taken.</div>');
                             check = false;
                         }  else {
                             $('.form-notice').html('');
@@ -149,7 +149,7 @@
             email = $.trim($('#email').val());
             var password = $.trim($('#password').val());
             if (check) {
-                $.ajax('/Passport/Login', {
+                $.ajax('/Passport/LoginForm', {
                     data: {
                         email: email,
                         password: password,
@@ -158,14 +158,14 @@
                     dataType: 'json',
                     success: function (data) {
                         if (data.code == 0) {
-                            $('.form-notice').html('<div class="alert alert-success" role="alert">登录成功.</div>');
+                            $('.form-notice').html('<div class="alert alert-success" role="alert">Login was successful.</div>');
                             location.replace('/');
                         }else {
-                            $('.form-notice').html('<div class="alert alert-danger" role="alert">登录失败.</div>');
+                            $('.form-notice').html('<div class="alert alert-danger" role="alert">Sign in has failed.</div>');
                         }
                     },
                     error: function () {
-                        $('.form-notice').html('<div class="alert alert-danger" role="alert">登录失败.</div>');
+                        $('.form-notice').html('<div class="alert alert-danger" role="alert">Sign in has failed.</div>');
                     }
                 });
             }
