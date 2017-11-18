@@ -128,7 +128,7 @@
                         <li><a class="ajax-disable" href="/User/List"><span class="glyphicons glyphicons-keys"></span>
                             人员列表 </a></li>
                         <li class="divider"></li>
-                        <li><a class="ajax-disable" href="/User/Group"><span class="glyphicons glyphicons-keys"></span>
+                        <li><a class="ajax-disable" href="/Group/List"><span class="glyphicons glyphicons-keys"></span>
                             人员分组 </a></li>
                         <li class="divider"></li>
                         <li><a class="ajax-disable" href="/account/groupaccess"><span

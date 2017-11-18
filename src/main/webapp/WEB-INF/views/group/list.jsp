@@ -115,7 +115,7 @@
                 <li> <a class="accordion-toggle" href="#sideAccount"><span class="glyphicons glyphicons-keys"></span><span class="sidebar-title">系统管理</span><span class="caret"></span></a>
                     <ul id="sideAccount" class="nav sub-nav" style="">
                         <li><a class="ajax-disable" href="/User/List"><span class="glyphicons glyphicons-keys"></span> 人员列表 </a></li>                    <li class="divider"></li>
-                        <li><a class="ajax-disable" href="/account/group"><span class="glyphicons glyphicons-keys"></span> 人员分组 </a></li>                      <li class="divider"></li>
+                        <li><a class="ajax-disable" href="/Group/List"><span class="glyphicons glyphicons-keys"></span> 人员分组 </a></li>                      <li class="divider"></li>
                         <li><a class="ajax-disable" href="/account/groupaccess"><span class="glyphicons glyphicons-keys"></span> 人员权限 </a></li>          </ul>
                 </li>
                 <li> <a class="accordion-toggle" href="#sideAccount1"><span class="glyphicons glyphicons-keys"></span><span class="sidebar-title">人员管理</span><span class="caret"></span></a>
