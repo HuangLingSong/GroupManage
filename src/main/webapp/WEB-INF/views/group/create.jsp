@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page import="com.glory.entity.User" %>
 <%@ page import="com.glory.entity.Group" %>
 <%@ page import="java.util.List" %>
@@ -29,6 +30,7 @@
                                         <option value=""></option>
                                         <%
                                             List<Group> groupList = (List<Group>) request.getAttribute("groups");
+                                            List<User> userList = (List<User>) request.getAttribute("users");
                                             if (groupList != null) {
                                                 for (int i = 0; i < groupList.size(); i++) {
                                                     Group groupItem = groupList.get(i);
@@ -47,8 +49,19 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">组长</label>
-                                    <input id="role" name="role" type="text" class="form-control" autocomplete="off"
-                                           required="">
+                                    <select class="form-control" id="editLeader">
+                                        <option value=""></option>
+                                    <%
+                                        if (userList != null) {
+                                            for (int i = 0; i < userList.size(); i++) {
+                                                User userItem = userList.get(i);
+                                    %>
+                                    <%--<input id="role" name="role" type="text" class="form-control" autocomplete="off" required="">--%>
+                                        <option value="<%= userItem.getId()%>"><%= userItem.getUsername() %></option>
+                                    <%
+                                        }}
+                                    %>
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <input class="submit btn bg-purple pull-right" type="submit" id="subBtn" value="Submit">

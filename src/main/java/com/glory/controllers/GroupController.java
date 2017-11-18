@@ -2,8 +2,11 @@ package com.glory.controllers;
 
 import com.glory.entity.Group;
 import com.glory.entity.ResponseJson;
+import com.glory.entity.User;
 import com.glory.service.GroupService;
+import com.glory.service.UserService;
 import com.glory.service.impl.GroupServiceImpl;
+import com.glory.service.impl.UserServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,6 +27,8 @@ public class GroupController {
 
     private GroupService groupService = new GroupServiceImpl();
 
+    private UserService userService = new UserServiceImpl();
+
     @RequestMapping(value = "List",method = RequestMethod.GET)
     public String list(HttpServletRequest request){
         List<Group> groups  =  groupService.getGroup();
@@ -39,6 +44,11 @@ public class GroupController {
         List<Group> groups  = groupService.getGroup();
         if (groups!=null){
             request.setAttribute("groups", groups);
+        }
+
+        List<User> users =  userService.getUser();
+        if (users!=null){
+            request.setAttribute("users", users);
         }
         return "group/create";
     }
