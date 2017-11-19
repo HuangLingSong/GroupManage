@@ -13,4 +13,8 @@ public interface GroupService {
 
     public int create(Group group);
 
+    public int edit(Group group);
+
+    public int delete(int id);
+
 }

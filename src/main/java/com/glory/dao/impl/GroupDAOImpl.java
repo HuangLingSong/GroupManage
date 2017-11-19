@@ -25,7 +25,7 @@ public class GroupDAOImpl implements GroupDAO {
             while (resultSet.next()) {
                 Group group = new Group();
                 group.setId(resultSet.getInt("id"));
-                group.setGroup(resultSet.getString("group"));
+                group.setGroup(resultSet.getString("group_name"));
                 group.setLeader(resultSet.getString("leader_name"));
                 group.setCreateAt(resultSet.getString("create_at"));
                 list.add(group);
@@ -42,8 +42,37 @@ public class GroupDAOImpl implements GroupDAO {
         dbManager = new DBManager();
         int resultSet = 0;
         try {
-            String sql = "insert into t_groups (group,leader,create_at) value (?,?,now())";
+            String sql = "insert into t_groups (group_name,leader,create_at) value (?,?,now())";
             resultSet = dbManager.doUpdate(sql, new Object[]{group.getGroup(),group.getLeaderId()});
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            dbManager.CloseConnection();
+        }
+        return resultSet;
+    }
+
+    public int edit(Group group){
+        dbManager = new DBManager();
+        int resultSet = 0;
+        try {
+            String sql = "update t_groups set group_name = ?,leader = ? where id = ?";
+            resultSet = dbManager.doUpdate(sql, new Object[]{ group.getGroup(),group.getLeaderId(),group.getId()});
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            dbManager.CloseConnection();
+        }
+        return resultSet;
+    }
+
+
+    public int delete(int id){
+        dbManager = new DBManager();
+        int resultSet = 0;
+        try {
+            String sql = "delete from t_groups where id = ?";
+            resultSet = dbManager.doUpdate(sql, new Object[]{id});
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

@@ -25,7 +25,7 @@ public class RoleDAOImpl  implements RoleDAO{
             while (resultSet.next()) {
                 Role role = new Role();
                 role.setId(resultSet.getInt("id"));
-                role.setRole(resultSet.getString("role"));
+                role.setRole(resultSet.getString("role_name"));
                 list.add(role);
             }
         } catch (SQLException e) {

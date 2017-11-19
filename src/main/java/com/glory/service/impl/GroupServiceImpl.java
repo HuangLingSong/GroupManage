@@ -21,4 +21,12 @@ public class GroupServiceImpl implements GroupService {
     public int create(Group group){
         return groupDAO.create(group);
     }
+
+    public int edit(Group group){
+        return groupDAO.edit(group);
+    }
+
+    public int delete(int id){
+        return groupDAO.delete(id);
+    }
 }

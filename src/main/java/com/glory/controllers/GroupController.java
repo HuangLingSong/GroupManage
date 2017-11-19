@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.swing.*;
 import java.util.List;
 
 /**
@@ -38,8 +37,8 @@ public class GroupController {
         return "group/list";
     }
 
-    @RequestMapping(value = "Create",method = RequestMethod.GET)
-    public String create(HttpServletRequest request){
+    @RequestMapping(value = "Handler",method = RequestMethod.GET)
+    public String create(HttpServletRequest request,@RequestParam("id") String id){
 
         List<Group> groups  = groupService.getGroup();
         if (groups!=null){
@@ -50,13 +49,28 @@ public class GroupController {
         if (users!=null){
             request.setAttribute("users", users);
         }
-        return "group/create";
+//        System.out.print(id);
+        request.setAttribute("filter", Integer.parseInt(id));
+        return "group/handler";
     }
 
-    @RequestMapping(value = "/CreateGroupForm", method = RequestMethod.POST)
-    public
-    @ResponseBody
-    ResponseJson registerForm(@RequestParam("groupName") String groupName, @RequestParam("leaderId") String leaderId) {
+
+    @RequestMapping(value = "DeleteGroupForm",method = RequestMethod.POST)
+    public @ResponseBody ResponseJson delete(@RequestParam("id") String id){
+
+        ResponseJson responseJson;
+
+       if( groupService.delete(Integer.parseInt(id))!=0){
+           responseJson = new ResponseJson(0, null, "成功");
+       }else {
+           responseJson = new ResponseJson(105, null, "删除分组失败");
+       }
+//        return "redirect:List";
+        return responseJson;
+    }
+
+    @RequestMapping(value = "CreateGroupForm", method = RequestMethod.POST)
+    public @ResponseBody ResponseJson CreateGroupForm(@RequestParam("groupName") String groupName, @RequestParam("leaderId") String leaderId) {
 
         ResponseJson responseJson;
 
@@ -71,6 +85,27 @@ public class GroupController {
 
         } else {
             responseJson = new ResponseJson(104, null, "添加分组失败");
+        }
+
+        return responseJson;
+    }
+
+    @RequestMapping(value = "EditGroupForm", method = RequestMethod.POST)
+    public ResponseJson EditGroupForm(@RequestParam("groupName") String groupName, @RequestParam("leaderId") String leaderId,@RequestParam("grouptId") String grouptId) {
+        ResponseJson responseJson;
+
+        Group  group = new Group();
+        group.setId(Integer.parseInt(grouptId));
+        group.setGroup(groupName);
+        group.setLeaderId(Integer.parseInt(leaderId));
+
+
+        if (groupService.edit(group) != 0) {
+
+            responseJson = new ResponseJson(0, null, "成功");
+
+        } else {
+            responseJson = new ResponseJson(104, null, "编辑分组失败");
         }
 
         return responseJson;

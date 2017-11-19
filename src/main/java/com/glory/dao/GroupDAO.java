@@ -11,7 +11,10 @@ public interface GroupDAO {
 
     public List<Group> getGroup();
 
-
     public int create(Group group);
+
+    public int edit(Group group);
+
+    public int delete(int id);
 
 }

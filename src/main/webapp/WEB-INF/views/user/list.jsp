@@ -59,7 +59,7 @@
                                             <%if (userItem.getGroupId()==0) {%> <option value='0' selected="selected"> 没有加入小组 </option>  <%}%>
                                         <% if (groupList != null) {
                                             for (int j = 0; j < groupList.size(); j++) {
-                                                Group groupItem = groupList.get(j); %>
+                                                Group groupItem = groupList.get(j) ; %>
                                         <option value="<%= groupItem.getId()%>" <% if (userItem.getGroupId() == groupItem.getId()) {%> selected="selected" <%}%> ><%= groupItem.getGroup() %></option>
                                         <%
                                                 }
@@ -73,7 +73,7 @@
                                                     Role roleTtem = roleList.get(j); %>
 
                                             <option value="<%= roleTtem.getId()%>" <% if (userItem.getRoleId() == roleTtem.getId()) {%>
-                                                    selected="selected" <%}%> ><%= roleTtem.getRole() %>
+                                                    selected="selected" <%}%> > <%= roleTtem.getRole() %>
                                             </option>
 
                                             <%

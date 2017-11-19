@@ -89,9 +89,8 @@
                                         <%--<button type="button" class="btn btn-default btn-xs editBtn" onclick="edit()"--%>
                                                 <%--data-id="<%= groupItem.getId()%>">编辑--%>
                                         <%--</button>--%>
-                                        <button type="button" class="btn btn-default btn-xs deleteBtn"
-                                                data-id="<%= groupItem.getId()%>">删除
-                                        </button>
+                                            <a href="/Group/Handler?id=<%= groupItem.getId()%>"><button type="button" class="btn btn-default btn-xs editBtn" data-id="<%= groupItem.getId()%>">编辑</button></a>
+                                             <button type="button" class="btn btn-default btn-xs deleteBtn" data-id="<%= groupItem.getId()%>">删除</button>
                                     </td>
                                 </tr>
 
@@ -131,6 +130,36 @@
 
 <script type="text/javascript">
     jQuery(document).ready(function () {
+
+
+
+        $('.deleteBtn').click(function () {
+
+            var id = $(this).attr("data-id");
+
+            $.ajax('/Group/DeleteGroupForm', {
+                data: {
+                    id: id,
+                },
+                type: 'post',
+                datype: 'json',
+                success: function (data) {
+                    if (data.code == 0) {
+
+                        location.replace("/Group/List")
+                    } else {
+                        alert("删除失败")
+                    }
+                },
+                error: function () {
+                    alert("删除失败")
+                }
+
+            });
+        });
+
+
+
 
         Core.init();
 

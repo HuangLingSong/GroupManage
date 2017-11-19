@@ -117,7 +117,7 @@
 <script>
     $(function () {
         $.backstretch("/resources/images/backgroundImg.jpg");
-        var fromSignin = $('#form-login');
+        var fromLogin = $('#form-login');
         var check = true;
         var email;
 
@@ -145,7 +145,7 @@
             }
         });
 
-        fromSignin.submit(function (event) {
+        fromLogin.submit(function (event) {
             email = $.trim($('#email').val());
             var password = $.trim($('#password').val());
             if (check) {
