@@ -26,7 +26,7 @@
                             <table class="table table-hover">
                                 <thead>
                                 <th style="width:1%" nowrap=""></th>
-                                <th style="width:1%" nowrap="">ID</th>
+                                <%--<th style="width:1%" nowrap="">ID</th>--%>
                                 <th style="width:1%" nowrap="">呢称</th>
                                 <th style="text-align: left;width:1%" nowrap="">Email</th>
                                 <th style="width:1%" nowrap="">分组</th>
@@ -49,7 +49,7 @@
 
                                 <tr>
                                     <td nowrap="" class="small"><%= i + 1%><img src="" width="50"/></td>
-                                    <td nowrap="" class="small"><%= userItem.getId() %><img src="" width="50"/></td>
+                                    <%--<td nowrap="" class="small"><%= userItem.getId() %><img src="" width="50"/></td>--%>
                                     <td class="small"><%= userItem.getUsername() %>
                                     </td>
                                     <td class="small"><%= userItem.getEamil()%>

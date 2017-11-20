@@ -121,8 +121,8 @@
                 </li>
                 <li> <a class="accordion-toggle" href="#sideAccount1"><span class="glyphicons glyphicons-keys"></span><span class="sidebar-title">我的小组</span><span class="caret"></span></a>
                     <ul id="sideAccount1" class="nav sub-nav" style="">
-                        <%--<li><a class="ajax-disable" href="/account/list"><span class="glyphicons glyphicons-keys"></span> 小组成员 </a></li>                    <li class="divider"></li>--%>
-                        <%--<li><a class="ajax-disable" href="/Group/Create"><span class="glyphicons glyphicons-keys"></span> 创建/编辑小组 </a></li>                      <li class="divider"></li>--%>
+                        <li><a class="ajax-disable" href="/Group/MyGroup?gid=<%= user.getGroupId() %>"><span class="glyphicons glyphicons-keys"></span> 小组成员 </a></li>                    <li class="divider"></li>
+                        <li><a class="ajax-disable" href="/Group/JoinGroup"><span class="glyphicons glyphicons-keys"></span> 加入小组 </a></li>                      <li class="divider"></li>
                         <%--<li><a class="ajax-disable" href="/account/group"><span class="glyphicons glyphicons-keys"></span> 添加/删除成员 </a></li>                      <li class="divider"></li>--%>
                     </ul>
                 </li>

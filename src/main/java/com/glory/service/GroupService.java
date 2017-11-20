@@ -1,6 +1,7 @@
 package com.glory.service;
 
 import com.glory.entity.Group;
+import com.glory.entity.User;
 
 import java.util.List;
 
@@ -16,5 +17,7 @@ public interface GroupService {
     public int edit(Group group);
 
     public int delete(int id);
+
+    public List<User> getMyGroup(int id);
 
 }

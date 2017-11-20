@@ -2,6 +2,7 @@ package com.glory.dao.impl;
 
 import com.glory.dao.GroupDAO;
 import com.glory.entity.Group;
+import com.glory.entity.User;
 import com.glory.libraries.DBManager;
 
 import java.sql.ResultSet;
@@ -79,6 +80,30 @@ public class GroupDAOImpl implements GroupDAO {
             dbManager.CloseConnection();
         }
         return resultSet;
+    }
+
+    public List<User> getMyGroup(int id){
+        List<User> list = new ArrayList<User>();
+        dbManager = new DBManager();
+        try {
+            String sql = "select *from t_users where group_id = ?";
+            ResultSet resultSet = dbManager.doQurey(sql, new Object[]{id});
+            while (resultSet.next()) {
+                User user = new User();
+                user.setId(resultSet.getInt("id"));
+                user.setEamil(resultSet.getString("email"));
+                user.setUsername(resultSet.getString("name"));
+                user.setCreateAt(resultSet.getString("create_at"));
+                user.setRoleId(resultSet.getInt("role_id"));
+                user.setGroupId(resultSet.getInt("group_id"));
+                list.add(user);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            dbManager.CloseConnection();
+        }
+        return list;
     }
 
 }

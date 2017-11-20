@@ -3,6 +3,7 @@ package com.glory.service.impl;
 import com.glory.dao.GroupDAO;
 import com.glory.dao.impl.GroupDAOImpl;
 import com.glory.entity.Group;
+import com.glory.entity.User;
 import com.glory.service.GroupService;
 
 import java.util.List;
@@ -28,5 +29,9 @@ public class GroupServiceImpl implements GroupService {
 
     public int delete(int id){
         return groupDAO.delete(id);
+    }
+
+    public List<User> getMyGroup(int id){
+        return groupDAO.getMyGroup(id);
     }
 }

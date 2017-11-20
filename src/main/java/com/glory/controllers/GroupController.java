@@ -1,5 +1,6 @@
 package com.glory.controllers;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.glory.entity.Group;
 import com.glory.entity.ResponseJson;
 import com.glory.entity.User;
@@ -52,6 +53,25 @@ public class GroupController {
 //        System.out.print(id);
         request.setAttribute("filter", Integer.parseInt(id));
         return "group/handler";
+    }
+
+    @RequestMapping(value = "MyGroup",method = RequestMethod.GET)
+    public String myGroup(HttpServletRequest request,@RequestParam("gid") String gid){
+
+        List<User> myGroup  = groupService.getMyGroup(Integer.parseInt(gid));
+        if (myGroup!=null){
+            request.setAttribute("myGroup", myGroup);
+        }
+        return "group/mygroup";
+    }
+
+    @RequestMapping(value = "JoinGroup",method = RequestMethod.GET)
+    public String joinGroup(HttpServletRequest request){
+        List<Group> groups  =  groupService.getGroup();
+        if (groups!=null){
+            request.setAttribute("groups", groups);
+        }
+        return "group/joingroup";
     }
 
 

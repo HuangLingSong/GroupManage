@@ -25,7 +25,7 @@
                             <table class="table table-hover">
                                 <thead>
                                 <th style="width:1%" nowrap=""></th>
-                                <th style="width:1%" nowrap="">ID</th>
+                                <%--<th style="width:1%" nowrap="">ID</th>--%>
                                 <th style="width:1%" nowrap="">组名</th>
                                 <th style="text-align: left;width:1%" nowrap="">组长/成员</th>
                                 <%--<th style="width:1%" nowrap="">成员</th>--%>
@@ -48,7 +48,7 @@
 
                                 <tr>
                                     <td nowrap="" class="small"><%= i + 1%><img src="" width="50"/></td>
-                                    <td nowrap="" class="small"><%= groupItem.getId() %><img src="" width="50"/></td>
+                                    <%--<td nowrap="" class="small"><%= groupItem.getId() %><img src="" width="50"/></td>--%>
                                     <td class="small"><%= groupItem.getGroup() %>
                                     </td>
                                     <%--<td class="small"><%= userItem.getEamil()%>--%>
