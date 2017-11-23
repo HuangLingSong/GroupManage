@@ -49,9 +49,7 @@ public class PassportController {
     }
 
     @RequestMapping(value = "/GetUser", method = RequestMethod.POST)
-    public
-    @ResponseBody
-    ResponseJson getUser(@RequestParam("email") String email) {
+    public @ResponseBody ResponseJson getUser(@RequestParam("email") String email) {
         ResponseJson responseJson;
 
         User user = userService.getUserByEmail(email);
@@ -64,9 +62,7 @@ public class PassportController {
     }
 
     @RequestMapping(value = "/LoginForm", method = RequestMethod.POST)
-    public
-    @ResponseBody
-    ResponseJson loginForm(@RequestParam("email") String email, @RequestParam("password") String passwd, HttpSession httpSession) {
+    public @ResponseBody ResponseJson loginForm(@RequestParam("email") String email, @RequestParam("password") String passwd, HttpSession httpSession) {
         ResponseJson responseJson;
         passwd = MD5Utils.MD5(passwd);
 
@@ -77,6 +73,7 @@ public class PassportController {
             if (passwd.equals(user.getPassword())) {
                 responseJson = new ResponseJson(0, null, "登录成功");
                 user.setPassword("");
+
                 httpSession.setAttribute("User", user);
             } else {
                 responseJson = new ResponseJson(103, null, "密码错误");
@@ -90,9 +87,7 @@ public class PassportController {
     }
 
     @RequestMapping(value = "/RegisterForm", method = RequestMethod.POST)
-    public
-    @ResponseBody
-    ResponseJson registerForm(@RequestParam("email") String email, @RequestParam("password") String passwd, @RequestParam("name") String name) {
+    public @ResponseBody ResponseJson registerForm(@RequestParam("email") String email, @RequestParam("password") String passwd, @RequestParam("name") String name) {
 
         ResponseJson responseJson;
 

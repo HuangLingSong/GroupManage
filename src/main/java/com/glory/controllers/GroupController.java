@@ -1,6 +1,5 @@
 package com.glory.controllers;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.glory.entity.Group;
 import com.glory.entity.ResponseJson;
 import com.glory.entity.User;
@@ -111,7 +110,7 @@ public class GroupController {
     }
 
     @RequestMapping(value = "EditGroupForm", method = RequestMethod.POST)
-    public ResponseJson EditGroupForm(@RequestParam("groupName") String groupName, @RequestParam("leaderId") String leaderId,@RequestParam("grouptId") String grouptId) {
+    public @ResponseBody ResponseJson EditGroupForm(@RequestParam("groupName") String groupName, @RequestParam("leaderId") String leaderId,@RequestParam("grouptId") String grouptId) {
         ResponseJson responseJson;
 
         Group  group = new Group();

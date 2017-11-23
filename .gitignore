@@ -28,3 +28,4 @@ hs_err_pid*
 .project
 myMaven.iml
 GroupManage.iml
+GroupController.java

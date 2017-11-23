@@ -156,14 +156,14 @@
                     success:function () {
                         if (data.code == 0) {
                             alert("编辑成功")
-                            location.replace("/Group/List")
+//                            location.replace("/Group/List")
                         } else {
                             alert("编辑失败")
                         }
                     },
                     error:function () {
-                        alert("编辑失败")
-                        location.replace("/Group/List")
+                        alert("编辑失败2222")
+//                        location.replace("/Group/List")
                     }
                 })
 

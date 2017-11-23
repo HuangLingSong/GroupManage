@@ -8,7 +8,7 @@ import java.sql.*;
  */
 public class DBManager {
     static String Username = "root";            //数据库用户名
-    static String Password = "monster001";      //数据库密码
+    static String Password = "";      //数据库密码
     static String Databases = "glory";           //数据库名
 
     static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
