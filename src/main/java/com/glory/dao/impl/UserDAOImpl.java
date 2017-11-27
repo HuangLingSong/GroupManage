@@ -65,12 +65,13 @@ public class UserDAOImpl implements UserDAO {
         }
         return user;
     }
-
+	//添加用户
     @Override
     public int register(User user) {
         dbManager = new DBManager();
         int resultSet = 0;
         try {
+			//sql语句
             String sql = "insert into t_users (name,email,password,create_at) value (?,?,?,now())";
             resultSet = dbManager.doUpdate(sql, new Object[]{user.getUsername(), user.getEamil(), user.getPassword()});
         } catch (Exception e) {
