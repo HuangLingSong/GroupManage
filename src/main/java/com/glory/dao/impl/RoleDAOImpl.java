@@ -15,7 +15,7 @@ import java.util.List;
 public class RoleDAOImpl  implements RoleDAO{
 
     DBManager dbManager = null;
-
+    //查询角色
     public List<Role> getrole(){
         List<Role> list = new ArrayList<Role>();
         dbManager = new DBManager();
