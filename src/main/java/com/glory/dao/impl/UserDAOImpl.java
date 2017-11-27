@@ -41,7 +41,7 @@ public class UserDAOImpl implements UserDAO {
         }
         return user;
     }
-
+	//根据邮箱查询
     @Override
     public User getUserByEmail(String email) {
         User user = null;
