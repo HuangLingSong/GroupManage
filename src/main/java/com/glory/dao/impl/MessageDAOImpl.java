@@ -10,7 +10,7 @@ import com.glory.libraries.DBManager;
 public class MessageDAOImpl implements MessageDAO {
 
     DBManager dbManager = null;
-
+//添加信息
     @Override
     public int forgotPasswd(Message message) {
         dbManager = new DBManager();
