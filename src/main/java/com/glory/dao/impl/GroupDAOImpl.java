@@ -16,7 +16,7 @@ import java.util.List;
 public class GroupDAOImpl implements GroupDAO {
 
     DBManager dbManager = null;
-
+	// 获取组所有组
     public List<Group> getGroup() {
         List<Group> list = new ArrayList<Group>();
         dbManager = new DBManager();
