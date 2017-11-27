@@ -24,6 +24,7 @@ public class UserDAOImpl implements UserDAO {
         User user = null;
         dbManager = new DBManager();
         try {
+			//sql语句
             String sql = "select *from t_users where username=? and password=?";
             ResultSet resultSet = dbManager.doQurey(sql, new Object[]{username, password});
             while (resultSet.next()) {
