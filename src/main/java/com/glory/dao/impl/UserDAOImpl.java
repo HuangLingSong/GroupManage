@@ -18,7 +18,7 @@ import java.util.List;
 public class UserDAOImpl implements UserDAO {
 
     DBManager dbManager = null;
-
+    //通过用户名和密码查询
     @Override
     public User login(String username, String password) {
         User user = null;
