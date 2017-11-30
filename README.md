@@ -20,4 +20,3 @@
 3.常量：大写     例 JDBC_DRIVER
 
 
-test
