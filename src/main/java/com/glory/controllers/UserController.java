@@ -29,6 +29,8 @@ public class UserController {
 
     private GroupService groupService = new GroupServiceImpl();
 
+    
+    //y用户列表
     @RequestMapping(value = "/List", method = RequestMethod.GET)
     public String list(HttpServletRequest request) {
 
