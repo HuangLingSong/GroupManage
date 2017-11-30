@@ -1,5 +1,6 @@
 package com.glory.controllers;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.glory.entity.Group;
 import com.glory.entity.ResponseJson;
 import com.glory.entity.User;
@@ -30,7 +31,9 @@ public class GroupController {
 
     @RequestMapping(value = "List",method = RequestMethod.GET)
     public String list(HttpServletRequest request){
+    	//获取组的信息
         List<Group> groups  =  groupService.getGroup();
+        //如果组不为空，显示
         if (groups!=null){
             request.setAttribute("groups", groups);
         }
@@ -44,7 +47,7 @@ public class GroupController {
         if (groups!=null){
             request.setAttribute("groups", groups);
         }
-
+        //获取用户信息
         List<User> users =  userService.getUser();
         if (users!=null){
             request.setAttribute("users", users);
@@ -110,7 +113,7 @@ public class GroupController {
     }
 
     @RequestMapping(value = "EditGroupForm", method = RequestMethod.POST)
-    public @ResponseBody ResponseJson EditGroupForm(@RequestParam("groupName") String groupName, @RequestParam("leaderId") String leaderId,@RequestParam("grouptId") String grouptId) {
+    public ResponseJson EditGroupForm(@RequestParam("groupName") String groupName, @RequestParam("leaderId") String leaderId,@RequestParam("grouptId") String grouptId) {
         ResponseJson responseJson;
 
         Group  group = new Group();
