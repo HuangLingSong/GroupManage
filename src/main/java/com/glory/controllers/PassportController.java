@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/Passport")
-@SessionAttributes(value = "User")
+//@SessionAttributes(value = "User")
 public class PassportController {
 
     private UserService userService = new UserServiceImpl();
