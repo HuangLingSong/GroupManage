@@ -1,8 +1,8 @@
 package com.glory.controllers;
 
-import com.glory.entity.Message;
-import com.glory.entity.ResponseJson;
-import com.glory.entity.User;
+import com.glory.model.Message;
+import com.glory.model.ResponseJson;
+import com.glory.model.User;
 import com.glory.libraries.MD5Utils;
 import com.glory.service.MessageService;
 import com.glory.service.UserService;
@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/Passport")
-@SessionAttributes(value = "User")
+//@SessionAttributes(value = "User")
 public class PassportController {
 
     private UserService userService = new UserServiceImpl();
@@ -37,11 +37,6 @@ public class PassportController {
         return "passport/register";
     }
 
-    @RequestMapping("/Logout")
-    public String logout(HttpSession httpSession) {
-        httpSession.removeAttribute("User");
-        return "redirect:Login";
-    }
 
     @RequestMapping(value = "/Forgot", method = RequestMethod.GET)
     public String forgot() {
@@ -123,5 +118,11 @@ public class PassportController {
             responseJson = new ResponseJson(104, null, "添加消息失败");
         }
         return responseJson;
+    }
+
+    @RequestMapping("/Logout")
+    public String logout( HttpSession httpSession) {
+        httpSession.removeAttribute("User");
+        return "passport/login";
     }
 }

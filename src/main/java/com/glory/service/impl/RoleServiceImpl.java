@@ -2,7 +2,7 @@ package com.glory.service.impl;
 
 import com.glory.dao.RoleDAO;
 import com.glory.dao.impl.RoleDAOImpl;
-import com.glory.entity.Role;
+import com.glory.model.Role;
 import com.glory.service.RoleService;
 
 import java.util.List;

@@ -1,8 +1,8 @@
 package com.glory.controllers;
 
-import com.glory.entity.Group;
-import com.glory.entity.ResponseJson;
-import com.glory.entity.User;
+import com.glory.model.Group;
+import com.glory.model.ResponseJson;
+import com.glory.model.User;
 import com.glory.service.GroupService;
 import com.glory.service.UserService;
 import com.glory.service.impl.GroupServiceImpl;
@@ -37,19 +37,29 @@ public class GroupController {
         return "group/list";
     }
 
+
+      /*
+       *
+       * parameter :HttpServletRequest request,String id
+       *
+      */
     @RequestMapping(value = "Handler",method = RequestMethod.GET)
     public String create(HttpServletRequest request,@RequestParam("id") String id){
 
+        //获取所有组信息
         List<Group> groups  = groupService.getGroup();
         if (groups!=null){
+            //返回所有组给view
             request.setAttribute("groups", groups);
         }
 
+        //获取所有用户信息
         List<User> users =  userService.getUser();
         if (users!=null){
+            //返回所有用用户给view
             request.setAttribute("users", users);
         }
-//        System.out.print(id);
+//        编辑分组是返回要编辑小组id 用select标签默认选中
         request.setAttribute("filter", Integer.parseInt(id));
         return "group/handler";
     }

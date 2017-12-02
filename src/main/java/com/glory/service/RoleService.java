@@ -1,8 +1,7 @@
 package com.glory.service;
 
-import com.glory.entity.Role;
+import com.glory.model.Role;
 
-import java.io.PrintWriter;
 import java.util.List;
 
 /**

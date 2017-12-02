@@ -1,7 +1,7 @@
 package com.glory.dao.impl;
 
 import com.glory.dao.MessageDAO;
-import com.glory.entity.Message;
+import com.glory.model.Message;
 import com.glory.libraries.DBManager;
 
 /**

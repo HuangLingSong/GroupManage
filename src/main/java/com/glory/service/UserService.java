@@ -1,8 +1,6 @@
 package com.glory.service;
 
-import com.glory.entity.Group;
-import com.glory.entity.Role;
-import com.glory.entity.User;
+import com.glory.model.User;
 
 import java.util.List;
 

@@ -2,7 +2,7 @@ package com.glory.service.impl;
 
 import com.glory.dao.MessageDAO;
 import com.glory.dao.impl.MessageDAOImpl;
-import com.glory.entity.Message;
+import com.glory.model.Message;
 import com.glory.service.MessageService;
 
 /**

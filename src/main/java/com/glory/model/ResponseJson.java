@@ -1,6 +1,4 @@
-package com.glory.entity;
-
-import java.io.PrintWriter;
+package com.glory.model;
 
 /**
  * Created by Monster on 2017/11/18.

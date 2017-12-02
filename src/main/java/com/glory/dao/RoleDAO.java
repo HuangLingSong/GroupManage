@@ -1,6 +1,6 @@
 package com.glory.dao;
 
-import com.glory.entity.Role;
+import com.glory.model.Role;
 
 import java.util.List;
 

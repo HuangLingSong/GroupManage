@@ -2,8 +2,8 @@ package com.glory.service.impl;
 
 import com.glory.dao.GroupDAO;
 import com.glory.dao.impl.GroupDAOImpl;
-import com.glory.entity.Group;
-import com.glory.entity.User;
+import com.glory.model.Group;
+import com.glory.model.User;
 import com.glory.service.GroupService;
 
 import java.util.List;

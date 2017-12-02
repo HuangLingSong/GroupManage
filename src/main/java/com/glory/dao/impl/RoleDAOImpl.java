@@ -1,7 +1,7 @@
 package com.glory.dao.impl;
 
 import com.glory.dao.RoleDAO;
-import com.glory.entity.Role;
+import com.glory.model.Role;
 import com.glory.libraries.DBManager;
 
 import java.sql.ResultSet;

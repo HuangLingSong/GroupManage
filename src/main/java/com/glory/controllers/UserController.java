@@ -1,6 +1,6 @@
 package com.glory.controllers;
 
-import com.glory.entity.*;
+import com.glory.model.*;
 import com.glory.service.GroupService;
 import com.glory.service.RoleService;
 import com.glory.service.UserService;
