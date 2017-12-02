@@ -1,15 +1,8 @@
 package com.glory.controllers;
 
-<<<<<<< HEAD
 import com.glory.model.Group;
 import com.glory.model.ResponseJson;
 import com.glory.model.User;
-=======
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.glory.entity.Group;
-import com.glory.entity.ResponseJson;
-import com.glory.entity.User;
->>>>>>> 562893a38bd4ebc19809c310acc83ea00a7fbc57
 import com.glory.service.GroupService;
 import com.glory.service.UserService;
 import com.glory.service.impl.GroupServiceImpl;
@@ -37,42 +30,26 @@ public class GroupController {
 
     @RequestMapping(value = "List",method = RequestMethod.GET)
     public String list(HttpServletRequest request){
-    	//获取组的信息
         List<Group> groups  =  groupService.getGroup();
-        //如果组不为空，显示
         if (groups!=null){
             request.setAttribute("groups", groups);
         }
         return "group/list";
     }
 
-
-      /*
-       *
-       * parameter :HttpServletRequest request,String id
-       *
-      */
     @RequestMapping(value = "Handler",method = RequestMethod.GET)
     public String create(HttpServletRequest request,@RequestParam("id") String id){
 
-        //获取所有组信息
         List<Group> groups  = groupService.getGroup();
         if (groups!=null){
-            //返回所有组给view
             request.setAttribute("groups", groups);
         }
-<<<<<<< HEAD
 
-        //获取所有用户信息
-=======
-        //获取用户信息
->>>>>>> 562893a38bd4ebc19809c310acc83ea00a7fbc57
         List<User> users =  userService.getUser();
         if (users!=null){
-            //返回所有用用户给view
             request.setAttribute("users", users);
         }
-//        编辑分组是返回要编辑小组id 用select标签默认选中
+//        System.out.print(id);
         request.setAttribute("filter", Integer.parseInt(id));
         return "group/handler";
     }
@@ -133,7 +110,7 @@ public class GroupController {
     }
 
     @RequestMapping(value = "EditGroupForm", method = RequestMethod.POST)
-    public ResponseJson EditGroupForm(@RequestParam("groupName") String groupName, @RequestParam("leaderId") String leaderId,@RequestParam("grouptId") String grouptId) {
+    public @ResponseBody ResponseJson EditGroupForm(@RequestParam("groupName") String groupName, @RequestParam("leaderId") String leaderId,@RequestParam("grouptId") String grouptId) {
         ResponseJson responseJson;
 
         Group  group = new Group();

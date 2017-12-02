@@ -1,13 +1,13 @@
-package com.glory.dao;
+package com.glory.service;
 
 import com.glory.model.User;
 
 import java.util.List;
 
 /**
- * Created by Monster on 2017/10/25.
+ * Created by Monster on 2017/10/27.
  */
-public interface UserDAO {
+public interface UserService {
 
     public User login(String username, String password);
 

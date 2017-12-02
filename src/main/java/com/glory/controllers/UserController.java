@@ -29,8 +29,6 @@ public class UserController {
 
     private GroupService groupService = new GroupServiceImpl();
 
-    
-    //y用户列表
     @RequestMapping(value = "/List", method = RequestMethod.GET)
     public String list(HttpServletRequest request) {
 
@@ -52,7 +50,7 @@ public class UserController {
         return "user/list";
     }
 
-//编辑用户
+
     @RequestMapping(value = "/EditForm",method = RequestMethod.POST)
     public @ResponseBody ResponseJson edit(@RequestParam("id") String id,@RequestParam("groupId") String groupId,@RequestParam("roleId") String roleId){
         ResponseJson responseJson;
@@ -71,7 +69,6 @@ public class UserController {
 
     }
 
-    //删除用户
     @RequestMapping(value = "/DeleteForm",method = RequestMethod.POST)
     public @ResponseBody ResponseJson delete(@RequestParam("id") String id){
         ResponseJson responseJson;

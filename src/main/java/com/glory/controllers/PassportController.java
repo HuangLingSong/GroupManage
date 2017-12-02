@@ -20,34 +20,28 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/Passport")
-//@SessionAttributes(value = "User")
+@SessionAttributes(value = "User")
 public class PassportController {
 
     private UserService userService = new UserServiceImpl();
 
     private MessageService messageService = new MessageServiceImpl();
 
-    //加载登录页面
     @RequestMapping(value = "/Login", method = RequestMethod.GET)
     public String login()  {
         return "passport/login";
     }
 
-    //注册
     @RequestMapping(value = "/Register", method = RequestMethod.GET)
     public String register() {
         return "passport/register";
     }
 
-<<<<<<< HEAD
-=======
-    //登出
     @RequestMapping("/Logout")
     public String logout(HttpSession httpSession) {
         httpSession.removeAttribute("User");
         return "redirect:Login";
     }
->>>>>>> 562893a38bd4ebc19809c310acc83ea00a7fbc57
 
     @RequestMapping(value = "/Forgot", method = RequestMethod.GET)
     public String forgot() {
@@ -60,15 +54,13 @@ public class PassportController {
 
         User user = userService.getUserByEmail(email);
         if (user != null) {
-            responseJson = new ResponseJson(0, user.getUsername(), "鐢ㄦ埛瀛樺湪");
+            responseJson = new ResponseJson(0, user.getUsername(), "用户存在");
         } else {
-            responseJson = new ResponseJson(102, null, "鐢ㄦ埛涓嶅瓨鍦�");
+            responseJson = new ResponseJson(102, null, "用户不存在");
         }
         return responseJson;
     }
 
-    
-    //接受登录提交信息
     @RequestMapping(value = "/LoginForm", method = RequestMethod.POST)
     public @ResponseBody ResponseJson loginForm(@RequestParam("email") String email, @RequestParam("password") String passwd, HttpSession httpSession) {
         ResponseJson responseJson;
@@ -79,22 +71,20 @@ public class PassportController {
         if (user != null) {
 
             if (passwd.equals(user.getPassword())) {
-                responseJson = new ResponseJson(0, null, "鐧诲綍鎴愬姛");
+                responseJson = new ResponseJson(0, null, "登录成功");
                 user.setPassword("");
 
                 httpSession.setAttribute("User", user);
             } else {
-                responseJson = new ResponseJson(103, null, "瀵嗙爜閿欒");
+                responseJson = new ResponseJson(103, null, "密码错误");
             }
 
         } else {
-            responseJson = new ResponseJson(102, null, "鐢ㄦ埛涓嶅瓨鍦�");
+            responseJson = new ResponseJson(102, null, "用户不存在");
         }
         return responseJson;
 
     }
-    
-    //接受注册页面提交信息
 
     @RequestMapping(value = "/RegisterForm", method = RequestMethod.POST)
     public @ResponseBody ResponseJson registerForm(@RequestParam("email") String email, @RequestParam("password") String passwd, @RequestParam("name") String name) {
@@ -108,16 +98,14 @@ public class PassportController {
 
         if (userService.register(user) != 0) {
 
-            responseJson = new ResponseJson(0, null, "娉ㄥ唽鎴愬姛");
+            responseJson = new ResponseJson(0, null, "注册成功");
 
         } else {
-            responseJson = new ResponseJson(104, null, "娉ㄥ唽澶辫触");
+            responseJson = new ResponseJson(104, null, "注册失败");
         }
 
         return responseJson;
     }
-    
-    //忘记密码页面
 
     @RequestMapping(value = "/ForgotForm", method = RequestMethod.POST)
     public @ResponseBody ResponseJson forgotForm(@RequestParam("email") String email) {
@@ -129,17 +117,11 @@ public class PassportController {
         message.setContent(email);
         if (messageService.forgotPasswd(message) != 0) {
 
-            responseJson = new ResponseJson(0, null, "娣诲姞鎴愬姛");
+            responseJson = new ResponseJson(0, null, "添加成功");
 
         } else {
-            responseJson = new ResponseJson(104, null, "娣诲姞娑堟伅澶辫触");
+            responseJson = new ResponseJson(104, null, "添加消息失败");
         }
         return responseJson;
-    }
-
-    @RequestMapping("/Logout")
-    public String logout( HttpSession httpSession) {
-        httpSession.removeAttribute("User");
-        return "passport/login";
     }
 }

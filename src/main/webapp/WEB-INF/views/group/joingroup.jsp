@@ -90,8 +90,7 @@
         submitHandler.submit(function () {
             var grouptId=$('#editDepart').val();
             var userId=<%=user.getId()%>
-//            alert("grouptId="+grouptId+", userId="+userId)
-            alert('加入成功')
+            alert("grouptId="+grouptId+", userId="+userId)
                 //加入分组
 //            $.ajax('/Group/JoinGroupForm',{
 //                    data:{

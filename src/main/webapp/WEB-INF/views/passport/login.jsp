@@ -1,4 +1,4 @@
-<%@ page import="com.glory.model.User" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: Monster
   Date: 2017/11/17
@@ -6,10 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html; charset=UTF-8" %>
-<%
-
-    User user = (User) request.getSession().getAttribute("User");
-%>
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>
@@ -53,7 +49,7 @@
 
 </head>
 <body class="style-2">
-<%--<%=user.getUsername()%>--%>
+
 <div class="container">
     <div class="row">
         <div class="col-md-12 text-center">
