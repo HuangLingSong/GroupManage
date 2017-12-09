@@ -1,6 +1,6 @@
-package com.glory.controllers;
+package com.glory.controller;
 
-import com.glory.model.User;
+import com.glory.entity.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,7 +21,6 @@ public class IndexController {
 
     @RequestMapping(value = "/Index", method = RequestMethod.GET)
     public String login(HttpServletRequest request, HttpServletResponse response,HttpSession httpSession) throws ServletException, IOException {
-
 
         User user = (User) httpSession.getAttribute("User");
         if (user == null) {

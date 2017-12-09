@@ -1,16 +1,21 @@
-package com.glory.controllers;
+package com.glory.controller;
 
-import com.glory.model.Message;
-import com.glory.model.ResponseJson;
-import com.glory.model.User;
+import com.glory.entity.Chat;
+import com.glory.entity.Message;
+import com.glory.entity.ResponseJson;
+import com.glory.entity.User;
 import com.glory.libraries.MD5Utils;
+import com.glory.service.ChatService;
 import com.glory.service.MessageService;
 import com.glory.service.UserService;
+import com.glory.service.impl.ChatServiceImpl;
 import com.glory.service.impl.MessageServiceImpl;
 import com.glory.service.impl.UserServiceImpl;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 
@@ -26,6 +31,9 @@ public class PassportController {
     private UserService userService = new UserServiceImpl();
 
     private MessageService messageService = new MessageServiceImpl();
+
+    private ChatService chatService = new ChatServiceImpl();
+
 
     @RequestMapping(value = "/Login", method = RequestMethod.GET)
     public String login()  {
@@ -49,7 +57,11 @@ public class PassportController {
     }
 
     @RequestMapping(value = "/GetUser", method = RequestMethod.POST)
-    public @ResponseBody ResponseJson getUser(@RequestParam("email") String email) {
+    public @ResponseBody
+    ResponseJson getUser(@RequestParam("email") String email) {
+        Chat chat = chatService.findById(1);
+        System.out.print(chat);
+
         ResponseJson responseJson;
 
         User user = userService.getUserByEmail(email);
@@ -58,11 +70,15 @@ public class PassportController {
         } else {
             responseJson = new ResponseJson(102, null, "用户不存在");
         }
+
+
+
         return responseJson;
     }
 
     @RequestMapping(value = "/LoginForm", method = RequestMethod.POST)
-    public @ResponseBody ResponseJson loginForm(@RequestParam("email") String email, @RequestParam("password") String passwd, HttpSession httpSession) {
+    public @ResponseBody
+    ResponseJson loginForm(@RequestParam("email") String email, @RequestParam("password") String passwd, HttpSession httpSession) {
         ResponseJson responseJson;
         passwd = MD5Utils.MD5(passwd);
 
@@ -87,7 +103,8 @@ public class PassportController {
     }
 
     @RequestMapping(value = "/RegisterForm", method = RequestMethod.POST)
-    public @ResponseBody ResponseJson registerForm(@RequestParam("email") String email, @RequestParam("password") String passwd, @RequestParam("name") String name) {
+    public @ResponseBody
+    ResponseJson registerForm(@RequestParam("email") String email, @RequestParam("password") String passwd, @RequestParam("name") String name) {
 
         ResponseJson responseJson;
 
@@ -108,7 +125,8 @@ public class PassportController {
     }
 
     @RequestMapping(value = "/ForgotForm", method = RequestMethod.POST)
-    public @ResponseBody ResponseJson forgotForm(@RequestParam("email") String email) {
+    public @ResponseBody
+    ResponseJson forgotForm(@RequestParam("email") String email) {
 
         ResponseJson responseJson;
 

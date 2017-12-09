@@ -1,7 +1,7 @@
-<%@ page import="com.glory.model.User" %>
-<%@ page import="com.glory.model.Group" %>
+<%@ page import="com.glory.entity.User" %>
+<%@ page import="com.glory.entity.Group" %>
 <%@ page import="java.util.List" %>
-<%@include file="/WEB-INF/views/public.jsp"%>
+<%@include file="/views/public.jsp"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
 
 

@@ -1,6 +1,6 @@
 package com.glory.service;
 
-import com.glory.model.Role;
+import com.glory.entity.Role;
 
 import java.util.List;
 

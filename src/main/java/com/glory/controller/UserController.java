@@ -1,6 +1,9 @@
-package com.glory.controllers;
+package com.glory.controller;
 
-import com.glory.model.*;
+import com.glory.entity.Group;
+import com.glory.entity.ResponseJson;
+import com.glory.entity.Role;
+import com.glory.entity.User;
 import com.glory.service.GroupService;
 import com.glory.service.RoleService;
 import com.glory.service.UserService;
@@ -52,7 +55,8 @@ public class UserController {
 
 
     @RequestMapping(value = "/EditForm",method = RequestMethod.POST)
-    public @ResponseBody ResponseJson edit(@RequestParam("id") String id,@RequestParam("groupId") String groupId,@RequestParam("roleId") String roleId){
+    public @ResponseBody
+    ResponseJson edit(@RequestParam("id") String id, @RequestParam("groupId") String groupId, @RequestParam("roleId") String roleId){
         ResponseJson responseJson;
 
         User user = new User(Integer.parseInt(id),Integer.parseInt(roleId),Integer.parseInt(groupId));
@@ -70,7 +74,8 @@ public class UserController {
     }
 
     @RequestMapping(value = "/DeleteForm",method = RequestMethod.POST)
-    public @ResponseBody ResponseJson delete(@RequestParam("id") String id){
+    public @ResponseBody
+    ResponseJson delete(@RequestParam("id") String id){
         ResponseJson responseJson;
 
         if( userService.delete(Integer.parseInt(id))!=0){

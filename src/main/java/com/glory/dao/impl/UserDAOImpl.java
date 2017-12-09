@@ -2,7 +2,7 @@ package com.glory.dao.impl;
 
 
 import com.glory.dao.UserDAO;
-import com.glory.model.User;
+import com.glory.entity.User;
 import com.glory.libraries.DBManager;
 
 import java.sql.ResultSet;

@@ -1,8 +1,8 @@
-package com.glory.controllers;
+package com.glory.controller;
 
-import com.glory.model.Group;
-import com.glory.model.ResponseJson;
-import com.glory.model.User;
+import com.glory.entity.Group;
+import com.glory.entity.ResponseJson;
+import com.glory.entity.User;
 import com.glory.service.GroupService;
 import com.glory.service.UserService;
 import com.glory.service.impl.GroupServiceImpl;
@@ -75,7 +75,8 @@ public class GroupController {
 
 
     @RequestMapping(value = "DeleteGroupForm",method = RequestMethod.POST)
-    public @ResponseBody ResponseJson delete(@RequestParam("id") String id){
+    public @ResponseBody
+    ResponseJson delete(@RequestParam("id") String id){
 
         ResponseJson responseJson;
 
@@ -89,11 +90,12 @@ public class GroupController {
     }
 
     @RequestMapping(value = "CreateGroupForm", method = RequestMethod.POST)
-    public @ResponseBody ResponseJson CreateGroupForm(@RequestParam("groupName") String groupName, @RequestParam("leaderId") String leaderId) {
+    public @ResponseBody
+    ResponseJson CreateGroupForm(@RequestParam("groupName") String groupName, @RequestParam("leaderId") String leaderId) {
 
         ResponseJson responseJson;
 
-        Group  group = new Group();
+        Group group = new Group();
         group.setGroup(groupName);
         group.setLeaderId(Integer.parseInt(leaderId));
 
@@ -110,10 +112,11 @@ public class GroupController {
     }
 
     @RequestMapping(value = "EditGroupForm", method = RequestMethod.POST)
-    public @ResponseBody ResponseJson EditGroupForm(@RequestParam("groupName") String groupName, @RequestParam("leaderId") String leaderId,@RequestParam("grouptId") String grouptId) {
+    public @ResponseBody
+    ResponseJson EditGroupForm(@RequestParam("groupName") String groupName, @RequestParam("leaderId") String leaderId, @RequestParam("grouptId") String grouptId) {
         ResponseJson responseJson;
 
-        Group  group = new Group();
+        Group group = new Group();
         group.setId(Integer.parseInt(grouptId));
         group.setGroup(groupName);
         group.setLeaderId(Integer.parseInt(leaderId));

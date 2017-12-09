@@ -1,4 +1,5 @@
 # GroupManage
+spring MVC+Maven+hibernate
 
 状态码说明
 0       成功

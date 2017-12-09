@@ -3,7 +3,7 @@ package com.glory.service.impl;
 
 import com.glory.dao.UserDAO;
 import com.glory.dao.impl.UserDAOImpl;
-import com.glory.model.User;
+import com.glory.entity.User;
 import com.glory.service.UserService;
 
 import java.util.List;

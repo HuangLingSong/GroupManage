@@ -1,6 +1,6 @@
 package com.glory.dao;
 
-import com.glory.model.Message;
+import com.glory.entity.Message;
 
 /**
  * Created by Monster on 2017/11/18.

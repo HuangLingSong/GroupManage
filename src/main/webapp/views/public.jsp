@@ -1,4 +1,4 @@
-<%@ page import="com.glory.model.User" %>
+<%@ page import="com.glory.entity.User" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%
     User user= (User) session.getAttribute("User");
@@ -72,7 +72,7 @@
             <div class="media">
                 <a class="pull-left" href="#">
                     <div class="media-object border border-purple br64 bw2 p2">
-                        <img class="br64"  src="/resources/images/portrait.jpg" alt="...">
+                        <img class="br64" src="/resources/images/portrait.jpg" alt="...">
                     </div>
                 </a>
                 <div class="mobile-link"> <span class="glyphicons glyphicons-show_big_thumbnails"></span> </div>

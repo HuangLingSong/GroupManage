@@ -1,8 +1,8 @@
 package com.glory.dao.impl;
 
 import com.glory.dao.GroupDAO;
-import com.glory.model.Group;
-import com.glory.model.User;
+import com.glory.entity.Group;
+import com.glory.entity.User;
 import com.glory.libraries.DBManager;
 
 import java.sql.ResultSet;
