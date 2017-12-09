@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
-<%@include file="/WEB-INF/views/public.jsp"%>
+<%@include file="/views/public.jsp"%>
     <%--<?php echo $this->getContent(); ?>--%>
 </div>
 <!-- End #Main -->
