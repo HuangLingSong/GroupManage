@@ -12,8 +12,10 @@
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
-    <!--                             hibernate配置                          -->
+    <!--hibernate配置 -->
     <context:property-placeholder location="classpath:/jdbc.properties"/>
+    <!--日志配置-->
+    <context:property-placeholder location="classpath:/log4j.properties"/>
 
     <!--配置数据源-->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">

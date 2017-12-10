@@ -1,7 +1,7 @@
 package com.glory.dao.impl;
 
-import com.glory.dao.PersonRepository;
-import com.glory.entity.Person;
+import com.glory.dao.ArticleDAO;
+import com.glory.entity.Article;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,12 +9,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-/**
- * Created by XRom
- * On 11/16/2017.11:55 PM
- */
+
 @Repository
-public class PersonRepositoryImpl implements PersonRepository {
+public class ArticleDAOImpl implements ArticleDAO {
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -24,38 +21,38 @@ public class PersonRepositoryImpl implements PersonRepository {
     }
 
     @Override
-    public Person load(Long id) {
-        return (Person) getCurrentSession().load(Person.class, id);
+    public Article load(Long id) {
+        return (Article) getCurrentSession().load(Article.class, id);
     }
 
     @Override
-    public Person get(Long id) {
-        return (Person) getCurrentSession().get(Person.class, id);
+    public Article get(Long id) {
+        return (Article) getCurrentSession().get(Article.class, id);
     }
 
     @Override
-    public List<Person> findAll() {
+    public List<Article> findAll() {
         return null;
     }
 
     @Override
-    public void persist(Person entity) {
+    public void persist(Article entity) {
         getCurrentSession().persist(entity);
     }
 
     @Override
-    public Long save(Person entity) {
+    public Long save(Article entity) {
         return (Long) getCurrentSession().save(entity);
     }
 
     @Override
-    public void saveOrUpdate(Person entity) {
+    public void saveOrUpdate(Article entity) {
         getCurrentSession().saveOrUpdate(entity);
     }
 
     @Override
     public void delete(Long id) {
-        Person person = load(id);
+        Article person = load(id);
         getCurrentSession().delete(person);
     }
 

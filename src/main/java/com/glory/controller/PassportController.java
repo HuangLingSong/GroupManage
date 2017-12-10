@@ -1,14 +1,11 @@
 package com.glory.controller;
 
-import com.glory.entity.Chat;
 import com.glory.entity.Message;
 import com.glory.entity.ResponseJson;
 import com.glory.entity.User;
 import com.glory.libraries.MD5Utils;
-import com.glory.service.ChatService;
 import com.glory.service.MessageService;
 import com.glory.service.UserService;
-import com.glory.service.impl.ChatServiceImpl;
 import com.glory.service.impl.MessageServiceImpl;
 import com.glory.service.impl.UserServiceImpl;
 import org.springframework.stereotype.Controller;
@@ -32,7 +29,6 @@ public class PassportController {
 
     private MessageService messageService = new MessageServiceImpl();
 
-    private ChatService chatService = new ChatServiceImpl();
 
 
     @RequestMapping(value = "/Login", method = RequestMethod.GET)
@@ -59,8 +55,6 @@ public class PassportController {
     @RequestMapping(value = "/GetUser", method = RequestMethod.POST)
     public @ResponseBody
     ResponseJson getUser(@RequestParam("email") String email) {
-        Chat chat = chatService.findById(1);
-        System.out.print(chat);
 
         ResponseJson responseJson;
 

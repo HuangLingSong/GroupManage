@@ -19,6 +19,8 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css" href="/resources/bootstrap-3.3.7/css/bootstrap.css">
+
+
     <!-- Theme CSS -->
     <link rel="stylesheet" type="text/css" href="/resources/css/vendor.css">
     <link rel="stylesheet" type="text/css" href="/resources/css/theme.css">
@@ -112,20 +114,38 @@
         <div class="sidebar-menu">
             <ul class="nav">
                 <% if (user!=null) {%>
-                <li> <a class="accordion-toggle" href="#sideAccount"><span class="glyphicons glyphicons-keys"></span><span class="sidebar-title">系统管理</span><span class="caret"></span></a>
+
+                <li>
+                    <a class="accordion-toggle" href="#sideAccount2"><span class="glyphicons glyphicons-keys"></span><span class="sidebar-title">文章管理</span><span class="caret"></span></a>
+                    <ul id="sideAccount2" class="nav sub-nav" style="">
+                        <li><a class="ajax-disable" href="/Article/List"><span class="glyphicons glyphicons-keys"></span> 文章列表 </a></li>                    <li class="divider"></li>
+                        <li><a class="ajax-disable" href="/Article/Create"><span class="glyphicons glyphicons-keys"></span> 新建文章 </a></li>                      <li class="divider"></li>
+                        <%--<li><a class="ajax-disable" href="/account/group"><span class="glyphicons glyphicons-keys"></span> 添加/删除成员 </a></li>                      <li class="divider"></li>--%>
+                    </ul>
+                </li>
+
+
+
+                <li>
+                    <a class="accordion-toggle" href="#sideAccount"><span class="glyphicons glyphicons-keys"></span><span class="sidebar-title">系统管理</span><span class="caret"></span></a>
                     <ul id="sideAccount" class="nav sub-nav" style="">
                         <li><a class="ajax-disable" href="/User/List"><span class="glyphicons glyphicons-keys"></span> 人员列表 </a></li>                    <li class="divider"></li>
                         <li><a class="ajax-disable" href="/Group/List"><span class="glyphicons glyphicons-keys"></span> 分组列表 </a></li>                      <li class="divider"></li>
                         <li><a class="ajax-disable" href="/Group/Handler?id=0"><span class="glyphicons glyphicons-keys"></span> 创建/编辑小组 </a></li>
                     </ul>
                 </li>
-                <li> <a class="accordion-toggle" href="#sideAccount1"><span class="glyphicons glyphicons-keys"></span><span class="sidebar-title">我的小组</span><span class="caret"></span></a>
+
+
+
+                <li>
+                    <a class="accordion-toggle" href="#sideAccount1"><span class="glyphicons glyphicons-keys"></span><span class="sidebar-title">我的小组</span><span class="caret"></span></a>
                     <ul id="sideAccount1" class="nav sub-nav" style="">
                         <li><a class="ajax-disable" href="/Group/MyGroup?gid=<%= user.getGroupId() %>"><span class="glyphicons glyphicons-keys"></span> 小组成员 </a></li>                    <li class="divider"></li>
                         <li><a class="ajax-disable" href="/Group/JoinGroup"><span class="glyphicons glyphicons-keys"></span> 加入小组 </a></li>                      <li class="divider"></li>
                         <%--<li><a class="ajax-disable" href="/account/group"><span class="glyphicons glyphicons-keys"></span> 添加/删除成员 </a></li>                      <li class="divider"></li>--%>
                     </ul>
                 </li>
+
                 <%}%>
             </ul>
         </div>

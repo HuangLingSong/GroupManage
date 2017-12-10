@@ -19,12 +19,13 @@ public class BaseDAOImpl<T> implements BaseDAO<T> {
 
     @Autowired
     private HibernateTemplate hibernateTemplate;
-//
-//    public BaseDAOImpl(){
-//        Type type = getClass().getGenericSuperclass();
-//        Type[] parames = ((ParameterizedType) type).getActualTypeArguments();
+
+    @SuppressWarnings("unchecked")
+    public BaseDAOImpl(){
+//        Type grnType = getClass().getGenericSuperclass();
+//        Type[] parames = ((ParameterizedType) grnType).getActualTypeArguments();
 //        entityClass = (Class<T>) parames[0];
-//    }
+    }
 
     @Override
     public int findCount() {
