@@ -1,6 +1,6 @@
 package com.glory.service;
 
-import com.glory.entity.Message;
+import com.glory.model.Message;
 
 /**
  * Created by Monster on 2017/11/18.

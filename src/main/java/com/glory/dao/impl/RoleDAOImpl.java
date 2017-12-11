@@ -1,7 +1,7 @@
 package com.glory.dao.impl;
 
 import com.glory.dao.RoleDAO;
-import com.glory.entity.Role;
+import com.glory.model.Role;
 import com.glory.libraries.DBManager;
 
 import java.sql.ResultSet;
@@ -15,7 +15,7 @@ import java.util.List;
 public class RoleDAOImpl  implements RoleDAO{
 
     DBManager dbManager = null;
-
+    //查询角色表
     public List<Role> getrole(){
         List<Role> list = new ArrayList<Role>();
         dbManager = new DBManager();

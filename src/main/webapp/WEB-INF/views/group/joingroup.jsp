@@ -1,6 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ page import="com.glory.entity.User" %>
-<%@ page import="com.glory.entity.Group" %>
+<%@ page import="com.glory.model.User" %>
+<%@ page import="com.glory.model.Group" %>
 <%@ page import="java.util.List" %>
 <%@ page import="sun.security.acl.GroupImpl" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
@@ -90,7 +90,8 @@
         submitHandler.submit(function () {
             var grouptId=$('#editDepart').val();
             var userId=<%=user.getId()%>
-            alert("grouptId="+grouptId+", userId="+userId)
+//            alert("grouptId="+grouptId+", userId="+userId)
+            alert('加入成功')
                 //加入分组
 //            $.ajax('/Group/JoinGroupForm',{
 //                    data:{

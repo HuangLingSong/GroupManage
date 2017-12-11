@@ -1,6 +1,6 @@
 package com.glory.controllers;
 
-import com.glory.entity.User;
+import com.glory.model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

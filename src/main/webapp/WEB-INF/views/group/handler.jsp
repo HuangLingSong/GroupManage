@@ -1,6 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ page import="com.glory.entity.User" %>
-<%@ page import="com.glory.entity.Group" %>
+<%@ page import="com.glory.model.User" %>
+<%@ page import="com.glory.model.Group" %>
 <%@ page import="java.util.List" %>
 <%@ page import="sun.security.acl.GroupImpl" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
@@ -156,14 +156,14 @@
                     success:function () {
                         if (data.code == 0) {
                             alert("编辑成功")
-                            location.replace("/Group/List")
+//                            location.replace("/Group/List")
                         } else {
                             alert("编辑失败")
                         }
                     },
                     error:function () {
-                        alert("编辑失败")
-                        location.replace("/Group/List")
+                        alert("编辑失败2222")
+//                        location.replace("/Group/List")
                     }
                 })
 

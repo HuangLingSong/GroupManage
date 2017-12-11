@@ -1,4 +1,4 @@
-package com.glory.entity;
+package com.glory.model;
 
 /**
  * Created by Monster on 2017/10/25.

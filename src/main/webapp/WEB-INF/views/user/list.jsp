@@ -1,8 +1,8 @@
-<%@ page import="com.glory.entity.User" %>
+<%@ page import="com.glory.model.User" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.glory.entity.Group" %>
+<%@ page import="com.glory.model.Group" %>
 <%@ page import="java.security.Guard" %>
-<%@ page import="com.glory.entity.Role" %>
+<%@ page import="com.glory.model.Role" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@include file="/WEB-INF/views/public.jsp"%>
 
@@ -46,7 +46,7 @@
                                             User userItem = userList.get(i);
 
                                 %>
-
+                                   <%--asdss--%>
                                 <tr>
                                     <td nowrap="" class="small"><%= i + 1%><img src="" width="50"/></td>
                                     <%--<td nowrap="" class="small"><%= userItem.getId() %><img src="" width="50"/></td>--%>
