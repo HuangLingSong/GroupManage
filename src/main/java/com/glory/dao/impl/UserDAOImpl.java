@@ -2,7 +2,7 @@ package com.glory.dao.impl;
 
 
 import com.glory.dao.UserDAO;
-import com.glory.model.User;
+import com.glory.entity.User;
 import com.glory.libraries.DBManager;
 
 import java.sql.ResultSet;
@@ -16,13 +16,12 @@ import java.util.List;
 public class UserDAOImpl implements UserDAO {
 
     DBManager dbManager = null;
-    //通过用户名和密码查询
+
     @Override
     public User login(String username, String password) {
         User user = null;
         dbManager = new DBManager();
         try {
-			//sql语句
             String sql = "select *from t_users where username=? and password=?";
             ResultSet resultSet = dbManager.doQurey(sql, new Object[]{username, password});
             while (resultSet.next()) {
@@ -39,7 +38,7 @@ public class UserDAOImpl implements UserDAO {
         }
         return user;
     }
-	//根据邮箱查询
+
     @Override
     public User getUserByEmail(String email) {
         User user = null;
@@ -63,13 +62,12 @@ public class UserDAOImpl implements UserDAO {
         }
         return user;
     }
-	//添加用户
+
     @Override
     public int register(User user) {
         dbManager = new DBManager();
         int resultSet = 0;
         try {
-			//sql语句
             String sql = "insert into t_users (name,email,password,create_at) value (?,?,?,now())";
             resultSet = dbManager.doUpdate(sql, new Object[]{user.getUsername(), user.getEamil(), user.getPassword()});
         } catch (Exception e) {

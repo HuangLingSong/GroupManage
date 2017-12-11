@@ -1,8 +1,8 @@
 package com.glory.dao.impl;
 
 import com.glory.dao.GroupDAO;
-import com.glory.model.Group;
-import com.glory.model.User;
+import com.glory.entity.Group;
+import com.glory.entity.User;
 import com.glory.libraries.DBManager;
 
 import java.sql.ResultSet;
@@ -16,7 +16,7 @@ import java.util.List;
 public class GroupDAOImpl implements GroupDAO {
 
     DBManager dbManager = null;
-	// 获取组所有的组
+
     public List<Group> getGroup() {
         List<Group> list = new ArrayList<Group>();
         dbManager = new DBManager();

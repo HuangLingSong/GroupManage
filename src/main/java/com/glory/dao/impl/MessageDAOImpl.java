@@ -1,7 +1,7 @@
 package com.glory.dao.impl;
 
 import com.glory.dao.MessageDAO;
-import com.glory.model.Message;
+import com.glory.entity.Message;
 import com.glory.libraries.DBManager;
 
 /**
@@ -10,13 +10,12 @@ import com.glory.libraries.DBManager;
 public class MessageDAOImpl implements MessageDAO {
 
     DBManager dbManager = null;
-//添加信息
+
     @Override
     public int forgotPasswd(Message message) {
         dbManager = new DBManager();
         int resultSet = 0;
         try {
-			//sql语句
             String sql = "insert into t_message (content) value (?)";
             resultSet = dbManager.doUpdate(sql, new Object[]{message.getContent()});
         } catch (Exception e) {
