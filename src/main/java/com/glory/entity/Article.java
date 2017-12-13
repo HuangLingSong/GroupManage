@@ -1,43 +1,49 @@
 package com.glory.entity;
 
-import lombok.Data;
-
 import javax.persistence.*;
+import java.sql.Timestamp;
+import java.util.Objects;
 
-/**
- * Created by XRom
- * On 11/16/2017.11:50 PM
- */
-@Data
 @Entity
-@Table(name = "t_article")
+@Table(name = "t_article", schema = "glory")
 public class Article {
     @Id
-    @GeneratedValue
-    private Long id;
+    @Column(name = "id")
+    private int id;
 
+    @Basic
     @Column(name = "title")
     private String title;
 
+    @Basic
     @Column(name = "content")
     private String content;
 
+    @Basic
     @Column(name = "create_at")
-    private Long create_at = System.currentTimeMillis();
+    private Timestamp createAt;
 
-    @Column(name = "user_id")
-    private int user_id;
+//    @Basic
+//    @Column(name = "user_id")
+//    private Integer userId;
 
+    @Basic
     @Column(name = "role_id")
-    private int role_id;
+    private int roleId;
 
-    public Long getId() {
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User articleByUser;
+
+
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
+
 
     public String getTitle() {
         return title;
@@ -47,6 +53,7 @@ public class Article {
         this.title = title;
     }
 
+
     public String getContent() {
         return content;
     }
@@ -55,27 +62,31 @@ public class Article {
         this.content = content;
     }
 
-    public Long getCreate_at() {
-        return create_at;
+
+    public Timestamp getCreateAt() {
+        return createAt;
     }
 
-    public void setCreate_at(Long create_at) {
-        this.create_at = create_at;
+    public void setCreateAt(Timestamp createAt) {
+        this.createAt = createAt;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public int getRoleId() {
+        return roleId;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
     }
 
-    public int getRole_id() {
-        return role_id;
+    public User getarticleByUser() {
+        return articleByUser;
     }
 
-    public void setRole_id(int role_id) {
-        this.role_id = role_id;
+    public void setarticleByUser(User articleByUser) {
+        this.articleByUser = articleByUser;
     }
+
+
+
 }

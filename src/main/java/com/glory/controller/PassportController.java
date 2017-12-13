@@ -60,7 +60,7 @@ public class PassportController {
 
         User user = userService.getUserByEmail(email);
         if (user != null) {
-            responseJson = new ResponseJson(0, user.getUsername(), "用户存在");
+            responseJson = new ResponseJson(0, user.getName(), "用户存在");
         } else {
             responseJson = new ResponseJson(102, null, "用户不存在");
         }
@@ -104,8 +104,10 @@ public class PassportController {
 
         passwd = MD5Utils.MD5(passwd);
 
-        User user = new User(name, email, passwd);
-
+        User user = new User();
+        user.setName(name);
+        user.setEmail(email);
+        user.setPassword(passwd);
 
         if (userService.register(user) != 0) {
 

@@ -21,7 +21,7 @@
                 <div class="col-md-12">
                     <div class="panel">
                         <div class="panel-heading"><span class="panel-title"> <span
-                                class="glyphicons glyphicons-keys"></span> 人员列表 </span></div>
+                                class="glyphicon glyphicon-file"></span> 人员列表 </span></div>
                         <div class="panel-body">
                             <table class="table table-hover">
                                 <thead>
@@ -50,9 +50,9 @@
                                 <tr>
                                     <td nowrap="" class="small"><%= i + 1%><img src="" width="50"/></td>
                                     <%--<td nowrap="" class="small"><%= userItem.getId() %><img src="" width="50"/></td>--%>
-                                    <td class="small"><%= userItem.getUsername() %>
+                                    <td class="small"><%= userItem.getName() %>
                                     </td>
-                                    <td class="small"><%= userItem.getEamil()%>
+                                    <td class="small"><%= userItem.getEmail()%>
                                     </td>
                                     <td nowrap="">
                                         <select class="multiselect" id="group_<%= userItem.getId()%>">

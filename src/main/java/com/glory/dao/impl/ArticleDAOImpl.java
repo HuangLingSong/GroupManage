@@ -5,6 +5,7 @@ import com.glory.entity.Article;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -14,6 +15,9 @@ import java.util.List;
 public class ArticleDAOImpl implements ArticleDAO {
 
     @Autowired
+    private HibernateTemplate hibernateTemplate;
+
+    @Autowired
     private SessionFactory sessionFactory;
 
     private Session getCurrentSession() {
@@ -21,18 +25,18 @@ public class ArticleDAOImpl implements ArticleDAO {
     }
 
     @Override
-    public Article load(Long id) {
+    public Article load(int id) {
         return (Article) getCurrentSession().load(Article.class, id);
     }
 
     @Override
-    public Article get(Long id) {
-        return (Article) getCurrentSession().get(Article.class, id);
+    public Article get(int id) {
+        return (Article) this.hibernateTemplate.get(Article.class,id);
     }
 
     @Override
     public List<Article> findAll() {
-        return null;
+        return this.hibernateTemplate.loadAll(Article.class);
     }
 
     @Override
@@ -41,8 +45,8 @@ public class ArticleDAOImpl implements ArticleDAO {
     }
 
     @Override
-    public Long save(Article entity) {
-        return (Long) getCurrentSession().save(entity);
+    public int save(Article entity) {
+        return (int) this.hibernateTemplate.save(entity);
     }
 
     @Override
@@ -51,13 +55,16 @@ public class ArticleDAOImpl implements ArticleDAO {
     }
 
     @Override
-    public void delete(Long id) {
-        Article person = load(id);
-        getCurrentSession().delete(person);
+    public void delete(int id) {
+        Article article = load(id);
+
+        getCurrentSession().delete(article);
     }
 
     @Override
     public void flush() {
         getCurrentSession().flush();
     }
+
+
 }

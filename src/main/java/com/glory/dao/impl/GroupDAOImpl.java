@@ -91,9 +91,9 @@ public class GroupDAOImpl implements GroupDAO {
             while (resultSet.next()) {
                 User user = new User();
                 user.setId(resultSet.getInt("id"));
-                user.setEamil(resultSet.getString("email"));
-                user.setUsername(resultSet.getString("name"));
-                user.setCreateAt(resultSet.getString("create_at"));
+                user.setEmail(resultSet.getString("email"));
+                user.setName(resultSet.getString("name"));
+                user.setCreateAt(resultSet.getDate("create_at"));
                 user.setRoleId(resultSet.getInt("role_id"));
                 user.setGroupId(resultSet.getInt("group_id"));
                 list.add(user);

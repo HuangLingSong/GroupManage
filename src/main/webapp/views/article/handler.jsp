@@ -3,6 +3,7 @@
 <%@ page import="com.glory.entity.Group" %>
 <%@ page import="java.util.List" %>
 <%@ page import="sun.security.acl.GroupImpl" %>
+<%@ page import="com.glory.entity.Article" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@include file="/views/public.jsp"%>
 
@@ -28,16 +29,24 @@
                         <div class="col-md-3"></div>
                         <div class="col-md-6">
                             <div style="text-align: center;font-family: '微软雅黑 Light';font-size: large">添加文章</div>
-                            <form action="javascript:void(null);">
+                            <form action="javascript:void(null)">
                                 <div class="form-notice"></div>
                                 <div class="form-group">
+
+                                    <%
+
+                                        Article article = (Article) request.getAttribute("article");
+
+                                    %>
+
+
                                     <label class="control-label">文章标题</label>
-                                    <input id="name" name="name" type="text" class="form-control" autocomplete="off" required="">
+                                    <input id="title" name="title" type="text" class="form-control" autocomplete="off" value="<% if(article!=null){%><%=article.getTitle()%> <%}%>" required="">
                                 </div>
 
                                 <div class="form-group">
                                     <label class="article-content">内容</label>
-                                    <textarea id="article-content" name="content"></textarea>
+                                    <textarea id="article-content" name="content" required=""><% if(article!=null){%><%=article.getContent()%><%}%></textarea>
 
                                 </div>
 
@@ -51,7 +60,7 @@
                                     <%--</select>--%>
                                 <%--</div>--%>
                                 <div class="form-group">
-                                    <input class=" btn bg-purple pull-right" type="submit" id="subBtn" value="提交">
+                                    <input class=" btn bg-purple pull-right" type="button" id="subBtn" value="发布文章">
                                 </div>
                             </form>
                         </div>
@@ -87,40 +96,48 @@
          // status: false  //编辑器底部的状态栏
     });
 
+
     jQuery(document).ready(function () {
 
+        $('#subBtn').click(function (){
 
-        var submitHandler= $('#altForm');
+            var title = $('#title').val();
 
+            var text = simplemde.value(),
 
-        submitHandler.submit(function () {
-            // var grouptId=$('#editDepart').val();
-            <%--var userId=<%=user.getId()%>--%>
-            //     alert("grouptId="+grouptId+", userId="+userId)
-            //加入分组
-//            $.ajax('/Group/JoinGroupForm',{
-//                    data:{
-//                        groupName:name,
-//                        leaderId:leaderId
-//
-//                    },
-//                    type:'post',
-//                    dataType:'json',
-//                    success:function (data) {
-//                        if (data.code == 0) {
-//                            alert("添加成功")
-//                            location.replace("/Group/List")
-//                        } else {
-//                            alert("添加失败")
-//                        }
-//                    },
-//                    error:function () {
-//                        alert("添加失败")
-//                    }
-//                })
+                content = simplemde.options.previewRender(text);
+                // content = simplemde.markdown(text);
 
 
+            if (title==''||content==''){
+                return;
+            }else {
+                console.log(content)
+
+                $.ajax('/Article/CreateForm',{
+                   data:{
+                       title:title,
+                       content:content
+                   },
+                   type:'post',
+                   dataType:'json',
+                   success:function (data) {
+                       if (data.code == 0) {
+                           alert("添加成功")
+                           location.replace("/Article/List")
+                       } else {
+                           alert("添加失败")
+                       }
+                   },
+                   error:function () {
+                       alert("添加失败")
+                   }
+               })
+            }
+
+            //
         });
+
 
         Core.init();
 

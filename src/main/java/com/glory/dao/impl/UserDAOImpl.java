@@ -27,7 +27,7 @@ public class UserDAOImpl implements UserDAO {
             while (resultSet.next()) {
                 user = new User();
                 user.setId(resultSet.getInt("id"));
-                user.setUsername(resultSet.getString("username"));
+                user.setName(resultSet.getString("username"));
                 user.setPassword(resultSet.getString("password"));
 
             }
@@ -49,8 +49,8 @@ public class UserDAOImpl implements UserDAO {
             while (resultSet.next()) {
                 user = new User();
                 user.setId(resultSet.getInt("id"));
-                user.setEamil(resultSet.getString("email"));
-                user.setUsername(resultSet.getString("name"));
+                user.setEmail(resultSet.getString("email"));
+                user.setName(resultSet.getString("name"));
                 user.setPassword(resultSet.getString("password"));
                 user.setRoleId(resultSet.getInt("role_id"));
                 user.setGroupId(resultSet.getInt("group_id"));
@@ -69,7 +69,7 @@ public class UserDAOImpl implements UserDAO {
         int resultSet = 0;
         try {
             String sql = "insert into t_users (name,email,password,create_at) value (?,?,?,now())";
-            resultSet = dbManager.doUpdate(sql, new Object[]{user.getUsername(), user.getEamil(), user.getPassword()});
+            resultSet = dbManager.doUpdate(sql, new Object[]{user.getName(), user.getEmail(), user.getPassword()});
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -88,9 +88,9 @@ public class UserDAOImpl implements UserDAO {
             while (resultSet.next()) {
                 User user = new User();
                 user.setId(resultSet.getInt("id"));
-                user.setEamil(resultSet.getString("email"));
-                user.setUsername(resultSet.getString("name"));
-                user.setCreateAt(resultSet.getString("create_at"));
+                user.setEmail(resultSet.getString("email"));
+                user.setName(resultSet.getString("name"));
+                user.setCreateAt(resultSet.getDate("create_at"));
                 user.setRoleId(resultSet.getInt("role_id"));
                 user.setGroupId(resultSet.getInt("group_id"));
                 list.add(user);

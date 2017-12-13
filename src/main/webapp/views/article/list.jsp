@@ -1,8 +1,6 @@
-<%@ page import="com.glory.entity.User" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.glory.entity.Group" %>
 <%@ page import="java.security.Guard" %>
-<%@ page import="com.glory.entity.Role" %>
+<%@ page import="com.glory.entity.*" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@include file="/views/public.jsp"%>
 
@@ -21,11 +19,11 @@
                 <div class="col-md-12">
                     <div class="panel">
                         <div class="panel-heading"><span class="panel-title"> <span
-                                class="glyphicons glyphicons-keys"></span> 人员列表 </span></div>
+                                class="glyphicon glyphicon-file"></span> 文章列表 </span></div>
                         <div class="panel-body">
                             <table class="table table-hover">
                                 <thead>
-                                <th style="width:1%" nowrap=""></th>
+                                <th style="width:0.1%" nowrap=""></th>
                                 <%--<th style="width:1%" nowrap="">ID</th>--%>
                                 <th style="width:1%" nowrap="">文章名称</th>
                                 <th style="text-align: left;width:1%" nowrap="">内容</th>
@@ -37,59 +35,60 @@
 
                                 <tbody>
                                 <%
-                                    List<User> userList = (List<User>) request.getAttribute("users");
-                                    List<Group> groupList = (List<Group>) request.getAttribute("groups");
-                                    List<Role> roleList = (List<Role>) request.getAttribute("roles");
-                                    if (userList != null) {
-                                        for (int i = 0; i < userList.size(); i++) {
-                                            User userItem = userList.get(i);
+//
+
+                                    List<Article> articles = (List<Article>) request.getAttribute("articles");
+                                    if (articles != null) {
+                                        for (int i = 0; i < articles.size(); i++) {
+                                            Article article = articles.get(i);
 
                                 %>
 
                                 <tr>
                                     <td nowrap="" class="small"><%= i + 1%><img src="" width="50"/></td>
                                     <%--<td nowrap="" class="small"><%= userItem.getId() %><img src="" width="50"/></td>--%>
-                                    <td class="small"><%= userItem.getUsername() %>
+                                    <td class="small"><%= article.getTitle() %>
                                     </td>
-                                    <td class="small"><%= userItem.getEamil()%>
+                                    <td class="small"><a href="/Article/Details?id=<%= article.getId()%>"><%= article.getContent().substring(0,20)%></a>
                                     </td>
-                                    <td nowrap="">
-                                        <select class="multiselect" id="group_<%= userItem.getId()%>">
-                                            <%if (userItem.getGroupId()==0) {%> <option value='0' selected="selected"> 没有加入小组 </option>  <%}%>
-                                        <% if (groupList != null) {
-                                            for (int j = 0; j < groupList.size(); j++) {
-                                                Group groupItem = groupList.get(j) ; %>
-                                        <option value="<%= groupItem.getId()%>" <% if (userItem.getGroupId() == groupItem.getId()) {%> selected="selected" <%}%> ><%= groupItem.getGroup() %></option>
-                                        <%
-                                                }
-                                            }
-                                        %>
-                                    </select></td>
+                                    <%--<td nowrap="">--%>
+                                        <%--<select class="multiselect" id="group_<%= userItem.getId()%>">--%>
+                                            <%--<%if (userItem.getGroupId()==0) {%> <option value='0' selected="selected"> 没有加入小组 </option>  <%}%>--%>
+                                        <%--<% if (groupList != null) {--%>
+                                            <%--for (int j = 0; j < groupList.size(); j++) {--%>
+                                                <%--Group groupItem = groupList.get(j) ; %>--%>
+                                        <%--<option value="<%= groupItem.getId()%>" <% if (userItem.getGroupId() == groupItem.getId()) {%> selected="selected" <%}%> ><%= groupItem.getGroup() %></option>--%>
+                                        <%--<%--%>
+                                                <%--}--%>
+                                            <%--}--%>
+                                        <%--%>--%>
+                                    <%--</select>--%>
+                                    <%--</td>--%>
+                                    <%--<td nowrap>--%>
+                                        <%--<select class="multiselect" id="role_<%= userItem.getId()%>">--%>
+                                            <%--<% if (roleList != null) {--%>
+                                                <%--for (int j = 0; j < roleList.size(); j++) {--%>
+                                                    <%--Role roleTtem = roleList.get(j); %>--%>
+
+                                            <%--<option value="<%= roleTtem.getId()%>" <% if (userItem.getRoleId() == roleTtem.getId()) {%>--%>
+                                                    <%--selected="selected" <%}%> > <%= roleTtem.getRole() %>--%>
+                                            <%--</option>--%>
+
+                                            <%--<%--%>
+                                                    <%--}--%>
+                                                <%--}--%>
+                                            <%--%>--%>
+                                        <%--</select>--%>
+                                    <%--</td>--%>
+
+                                    <td nowrap class="small"><%= article.getarticleByUser().getName()%></td>
+                                    <td nowrap class="small"><%= article.getCreateAt()%></td>
                                     <td nowrap>
-                                        <select class="multiselect" id="role_<%= userItem.getId()%>">
-                                            <% if (roleList != null) {
-                                                for (int j = 0; j < roleList.size(); j++) {
-                                                    Role roleTtem = roleList.get(j); %>
-
-                                            <option value="<%= roleTtem.getId()%>" <% if (userItem.getRoleId() == roleTtem.getId()) {%>
-                                                    selected="selected" <%}%> > <%= roleTtem.getRole() %>
-                                            </option>
-
-                                            <%
-                                                    }
-                                                }
-                                            %>
-                                        </select>
-                                    </td>
-
-                                    <td nowrap class="small"><%= userItem.getCreateAt()%>
-                                    </td>
-                                    <td nowrap>
-                                        <button type="button" class="btn btn-default btn-xs editBtn"
-                                                data-id="<%= userItem.getId()%>">编辑
-                                        </button>
+                                        <a href="/Article/Edit?id=<%= article.getId()%>">
+                                            <button type="button" class="btn btn-default btn-xs">编辑</button>
+                                        </a>
                                         <button type="button" class="btn btn-default btn-xs deleteBtn"
-                                                data-id="<%= userItem.getId()%>">删除
+                                                data-id="<%= article.getId()%>">删除
                                         </button>
                                     </td>
                                 </tr>
@@ -129,45 +128,11 @@
 <script type="text/javascript">
     jQuery(document).ready(function () {
 
-        $('.editBtn').click(function () {
-
-                $('.btn').attr('disabled','disabled');
-                var id = $(this).attr("data-id");
-                var groupId = $('#group_' + id).val();
-                var roleId = $('#role_' + id).val();
-                    if (confirm("确定编辑人员")){
-                        $.ajax('/User/EditForm', {
-                            data: {
-                                id: id,
-                                groupId: groupId,
-                                roleId: roleId
-                            },
-                            type: 'post',
-                            datype: 'JSON',
-                            success: function (data) {
-                                if (data.code == 0) {
-                                    alert("编辑成功")
-                                    location.replace("/User/List")
-                                } else {
-                                    alert("编辑失败")
-                                }
-                            },
-                            error: function () {
-
-                            }
-
-                        })
-                    }
-
-            })
-
-
-
     $('.deleteBtn').click(function () {
 
         var id = $(this).attr("data-id");
 
-        $.ajax('/User/DeleteForm', {
+        $.ajax('/Article/DeleteForm', {
             data: {
                 id: id,
             },

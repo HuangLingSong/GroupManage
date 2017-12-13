@@ -20,11 +20,11 @@
                 <div class="col-md-12">
                     <div class="panel">
                         <div class="panel-heading"><span class="panel-title"> <span
-                                class="glyphicons glyphicons-keys"></span> 组列表 </span></div>
+                                class="glyphicon glyphicon-file"></span> 组列表 </span></div>
                         <div class="panel-body">
                             <table class="table table-hover">
                                 <thead>
-                                <th style="width:1%" nowrap=""></th>
+                                <th style="width:0.1%" nowrap=""></th>
                                 <%--<th style="width:1%" nowrap="">ID</th>--%>
                                 <th style="width:1%" nowrap="">组名</th>
                                 <th style="text-align: left;width:1%" nowrap="">组长/成员</th>
@@ -61,7 +61,7 @@
                                                     User userItem = userList.get(i);
                                                 if (userItem.getGroupId()== groupItem.getId()){  %>
 
-                                            <option value="<%= userItem.getId() %>"><%= userItem.getUsername()%>   </option>
+                                            <option value="<%= userItem.getId() %>"><%= userItem.getName()%>   </option>
 
                                         <%
                                             } }}

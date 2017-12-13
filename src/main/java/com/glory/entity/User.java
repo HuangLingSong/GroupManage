@@ -1,38 +1,45 @@
 package com.glory.entity;
 
-/**
- * Created by Monster on 2017/10/25.
- */
+import javax.persistence.*;
+import java.sql.Date;
+import java.util.Collection;
+import java.util.Objects;
+
+@Entity
+@Table(name = "t_users", schema = "glory", catalog = "")
 public class User {
 
+    @Id
+    @Column(name = "id")
     private int id;
 
-    private String username;
+    @Basic
+    @Column(name = "email")
+    private String email;
 
-    private String eamil;
-
+    @Basic
+    @Column(name = "password")
     private String password;
 
+    @Basic
+    @Column(name = "name")
+    private String name;
+
+    @Basic
+    @Column(name = "role_id")
     private int roleId;
 
-    private int groupId;
+    @Basic
+    @Column(name = "group_id")
+    private Integer groupId;
 
-    private String createAt;
+    @Basic
+    @Column(name = "create_at")
+    private Date createAt;
 
-    public User() {
-    }
+    @OneToMany(mappedBy = "articleByUser")
+    private Collection<Article> userToArticle;
 
-    public User(String username, String eamil, String password) {
-        this.username = username;
-        this.eamil = eamil;
-        this.password = password;
-    }
-
-    public User(int id, int roleId, int groupId) {
-        this.id = id;
-        this.roleId = roleId;
-        this.groupId = groupId;
-    }
 
     public int getId() {
         return id;
@@ -42,21 +49,15 @@ public class User {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getEamil() {
-        return eamil;
-    }
-
-    public void setEamil(String eamil) {
-        this.eamil = eamil;
-    }
 
     public String getPassword() {
         return password;
@@ -66,6 +67,16 @@ public class User {
         this.password = password;
     }
 
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
     public int getRoleId() {
         return roleId;
     }
@@ -74,19 +85,50 @@ public class User {
         this.roleId = roleId;
     }
 
-    public int getGroupId() {
+
+    public Integer getGroupId() {
         return groupId;
     }
 
-    public void setGroupId(int groupId) {
+    public void setGroupId(Integer groupId) {
         this.groupId = groupId;
     }
 
-    public String getCreateAt() {
+
+    public Date getCreateAt() {
         return createAt;
     }
 
-    public void setCreateAt(String createAt) {
+    public void setCreateAt(Date createAt) {
         this.createAt = createAt;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User tUsers = (User) o;
+        return id == tUsers.id &&
+                roleId == tUsers.roleId &&
+                Objects.equals(email, tUsers.email) &&
+                Objects.equals(password, tUsers.password) &&
+                Objects.equals(name, tUsers.name) &&
+                Objects.equals(groupId, tUsers.groupId) &&
+                Objects.equals(createAt, tUsers.createAt);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(id, email, password, name, roleId, groupId, createAt);
+    }
+
+
+    public Collection<Article> getuserToArticle() {
+        return userToArticle;
+    }
+
+    public void setuserToArticle(Collection<Article> userToArticle) {
+        this.userToArticle = userToArticle;
     }
 }

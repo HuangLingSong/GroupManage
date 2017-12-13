@@ -6,8 +6,10 @@
   <session-factory>
     <property name="connection.url">jdbc:mysql://localhost:3306/glory</property>
     <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-    <mapping class="com.glory.entity.Article"/>
-    <!-- <property name="connection.username"/> -->
+      <mapping class="com.glory.entity.Chat"/>
+      <mapping class="com.glory.entity.Article"/>
+      <mapping class="com.glory.entity.User"/>
+      <!-- <property name="connection.username"/> -->
     <!-- <property name="connection.password"/> -->
 
     <!-- DB schema will be updated if needed -->

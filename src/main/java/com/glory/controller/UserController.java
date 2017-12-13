@@ -59,8 +59,10 @@ public class UserController {
     ResponseJson edit(@RequestParam("id") String id, @RequestParam("groupId") String groupId, @RequestParam("roleId") String roleId){
         ResponseJson responseJson;
 
-        User user = new User(Integer.parseInt(id),Integer.parseInt(roleId),Integer.parseInt(groupId));
-
+        User user = new User();
+        user.setId(Integer.parseInt(id));
+        user.setRoleId(Integer.parseInt(roleId));
+        user.setGroupId(Integer.parseInt(groupId));
         if( userService.edit(user)!=0){
 
             responseJson = new ResponseJson(0, null, "成功");

@@ -13,6 +13,10 @@ public interface BaseDAO<T> {
 
     List<T> findAll(int page, int pageSize);
 
+    List<T> find(String hql);
+
+    List<T> find(String hql, Object... params);
+
     T findById(int id);
 
     void update(T t);
@@ -21,7 +25,5 @@ public interface BaseDAO<T> {
 
     void save(T t);
 
-    List<T> find(String hql);
 
-    List<T> find(String hql, Object... params);
 }

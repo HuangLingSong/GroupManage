@@ -72,7 +72,7 @@
                                     %>
                                     <%--<input id="role" name="role" type="text" class="form-control" autocomplete="off" required="">--%>
                                         <%--<option value="<%= userItem.getId()%>" <%if (userItem.getId()==groupItem.getLeaderId()){%> selected="selected" <%}%> ><%= userItem.getId()+". "+userItem.getUsername() %></option>--%>
-                                        <option value="<%= userItem.getId()%>"     ><%= userItem.getId()+". "+userItem.getUsername() %></option>
+                                        <option value="<%= userItem.getId()%>"     ><%= userItem.getId()+". "+userItem.getName() %></option>
                                     <%
 //                                       }}
                                             }}
