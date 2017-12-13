@@ -53,35 +53,6 @@
                             <div class="col-md-12 room">
                                 <div></div>
 
-                                                                   <%--<div class="col-md-12  message_item">--%>
-                                    <%--<div class="user_info" ><p class="name">黄凌淞</p> <p class="time"> 2017/12/13 15:211 </p></div>--%>
-                                    <%--<p class="message_content">123123123123</p>--%>
-                                    <%--</div>--%>
-
-                                    <%--<div class="col-md-12 text-right message_item">--%>
-                                    <%--<div class="user_info" ><p class="name">黄凌淞</p> <p class="time"> 2017/12/13 15:212 </p></div>--%>
-                                    <%--<p class="message_content">123123123123</p>--%>
-                                    <%--</div>--%>
-
-                                    <%--<div class="col-md-12  message_item">--%>
-                                    <%--<div class="user_info" ><p class="name">黄凌淞</p> <p class="time"> 2017/12/13 15:213 </p></div>--%>
-                                    <%--<p class="message_content">123123123123</p>--%>
-                                    <%--</div>--%>
-
-                                    <%--<div class="col-md-12 text-right message_item">--%>
-                                    <%--<div class="user_info" ><p class="name">黄凌淞</p> <p class="time"> 2017/12/13 15:214 </p></div>--%>
-                                    <%--<p class="message_content">123123123123</p>--%>
-                                    <%--</div>--%>
-
-                                    <%--<div class="col-md-12 text-right message_item">--%>
-                                    <%--<div class="user_info" ><p class="name">黄凌淞</p> <p class="time"> 2017/12/13 15:215 </p></div>--%>
-                                    <%--<p class="message_content">123123123123</p>--%>
-                                    <%--</div>--%>
-
-                                    <%--<div class="col-md-12  message_item">--%>
-                                    <%--<div class="user_info" ><p class="name">黄凌淞</p> <p class="time"> 2017-12-06 09:55:46 </p></div>--%>
-                                    <%--<p class="message_content">asd</p>--%>
-                                    <%--</div>--%>
 
                             </div>
 
