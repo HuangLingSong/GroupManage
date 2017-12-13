@@ -1,5 +1,8 @@
 # GroupManage
+<<<<<<< HEAD
+=======
 spring MVC+Maven+hibernate
+>>>>>>> e24135b9c243f51ed018955e7b20c6254c27e6a4
 
 状态码说明
 0       成功
@@ -19,3 +22,9 @@ spring MVC+Maven+hibernate
 1.类名：大驼峰法 例 User、UserDAO
 2.变量：小驼峰发 例 id、dbManager
 3.常量：大写     例 JDBC_DRIVER
+<<<<<<< HEAD
+
+1
+
+=======
+>>>>>>> e24135b9c243f51ed018955e7b20c6254c27e6a4
