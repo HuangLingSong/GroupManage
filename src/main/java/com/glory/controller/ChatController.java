@@ -42,7 +42,6 @@ public class ChatController {
         } else {
             responseJson = new ResponseJson(104, null, "失败");
         }
-
         return responseJson;
     }
 
@@ -51,7 +50,7 @@ public class ChatController {
     public ResponseJson saveMessage(@RequestParam("message") String message,@RequestParam("user_id") int user_id){
         Chat chat = new Chat();
         chat.setContent(message);
-        chat.setUserId(user_id);
+//        chat.setUserId(user_id);
         chatService.savaMessage(chat);
         ResponseJson responseJson;
 

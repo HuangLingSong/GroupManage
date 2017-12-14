@@ -1,5 +1,10 @@
 package com.glory.entity;
 
+import com.sun.xml.internal.ws.assembler.jaxws.TerminalTubeFactory;
+import org.codehaus.jackson.map.ObjectMapper;
+
+import java.io.IOException;
+
 /**
  * Created by Monster on 2017/11/18.
  */
@@ -17,8 +22,16 @@ public class ResponseJson {
 
     public ResponseJson(int code, Object data, String msg) {
         this.code = code;
-        this.data = data;
+
         this.msg = msg;
+
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            this.data= mapper.writeValueAsString(data);
+        } catch (IOException e) {
+            this.data="Json转换失败";
+            e.printStackTrace();
+        }
     }
 
     public void setCode(int code) {
@@ -26,6 +39,7 @@ public class ResponseJson {
     }
 
     public Object getData() {
+
         return data;
     }
 

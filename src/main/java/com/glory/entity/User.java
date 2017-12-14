@@ -37,8 +37,8 @@ public class User {
     @Column(name = "create_at")
     private Date createAt;
 
-    @OneToMany(mappedBy = "articleByUser")
-    private Collection<Article> userToArticle;
+//    @OneToMany(mappedBy = "articleByUser")
+//    private Collection<Article> userToArticle;
 
 
     public int getId() {
@@ -124,11 +124,11 @@ public class User {
     }
 
 
-    public Collection<Article> getuserToArticle() {
-        return userToArticle;
-    }
-
-    public void setuserToArticle(Collection<Article> userToArticle) {
-        this.userToArticle = userToArticle;
-    }
+//    public Collection<Article> getuserToArticle() {
+//        return userToArticle;
+//    }
+//
+//    public void setuserToArticle(Collection<Article> userToArticle) {
+//        this.userToArticle = userToArticle;
+//    }
 }

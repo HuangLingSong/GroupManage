@@ -97,7 +97,7 @@
         <%}%>
 
 
-        // setInterval(function (args) {
+        setInterval(function (args) {
 
             var lastMsgTime= $('.time:last').html();
 
@@ -111,20 +111,21 @@
             type: 'post',
             dataType: 'json',
             success: function (data) {
+                var str=JSON.parse(data.data);
                 if (data.code != 0) {
                     alert("获取历史消息失败")
                 }
                 var html="";
-                for (var i=0;i<data.data.length;i++){
-                    if (me==data.data[i].userId){
+                for (var i=0;i<str.length;i++){
+                    if (me==str[i].chatByUser.id){
                         html+= '<div class="col-md-12  message_item text-right"> ' +
-                            '<div class="user_info" ><p class="name">'+data.data[i].userId+'</p> <p class="time">'+data.data[i].createAt+' </p></div> ' +
-                            '<p class="message_content">'+data.data[i].content+'</p> ' +
+                            '<div class="user_info" ><p class="name">'+str[i].chatByUser.name+'</p> <p class="time">'+str[i].createAt+' </p></div> ' +
+                            '<p class="message_content">'+str[i].content+'</p> ' +
                             '</div>';
                     }else {
                         html+= '<div class="col-md-12  message_item"> ' +
-                            '<div class="user_info" ><p class="name">'+data.data[i].userId+'</p> <p class="time">'+data.data[i].createAt+' </p></div> ' +
-                            '<p class="message_content">'+data.data[i].content+'</p> ' +
+                            '<div class="user_info" ><p class="name">'+str[i].chatByUser.name+'</p> <p class="time">'+str[i].createAt+' </p></div> ' +
+                            '<p class="message_content">'+str[i].content+'</p> ' +
                             '</div>';
                     }
 
@@ -132,14 +133,14 @@
                 }
 
                 $('.room>div:last').append(html)
-                console.log(me)
+                // $(".room").scrollTop('50%');
 
             },
             error: function () {
-                alert("获取历史消息失败")
+                alert("获取历史消息失败error")
             }
         })
-        // },3000000);
+        },3000);
 
 
 

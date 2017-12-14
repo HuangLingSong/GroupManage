@@ -19,9 +19,13 @@ public class Chat {
     @Column(name = "create_at")
     private String createAt;
 
-    @Basic
-    @Column(name = "user_id")
-    private int userId;
+//    @Basic
+//    @Column(name = "user_id")
+//    private int userId;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User chatByUser;
 
 
     public int getId() {
@@ -51,12 +55,19 @@ public class Chat {
     }
 
 
-    public int getUserId() {
-        return userId;
+//    public int getUserId() {
+//        return userId;
+//    }
+//
+//    public void setUserId(int userId) {
+//        this.userId = userId;
+//    }
+
+    public User getChatByUser() {
+        return chatByUser;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setChatByUser(User chatByUser) {
+        this.chatByUser = chatByUser;
     }
-
 }

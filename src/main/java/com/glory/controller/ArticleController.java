@@ -66,8 +66,6 @@ public class ArticleController {
         return "article/details";
     }
 
-
-
     @RequestMapping(value = "CreateForm",method = RequestMethod.POST)
     @ResponseBody
     public ResponseJson createForm(@RequestParam("title") String title, @RequestParam("content") String content,HttpSession httpSession){

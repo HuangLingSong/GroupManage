@@ -10,24 +10,10 @@ Target Server Type    : MYSQL
 Target Server Version : 50715
 File Encoding         : 65001
 
-Date: 2017-12-09 15:43:13
+Date: 2017-12-14 09:52:50
 */
 
 SET FOREIGN_KEY_CHECKS=0;
-
--- ----------------------------
--- Table structure for person
--- ----------------------------
-DROP TABLE IF EXISTS `person`;
-CREATE TABLE `person` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `created` char(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `username` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `address` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `phone` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `remark` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Table structure for t_acl
@@ -57,12 +43,15 @@ CREATE TABLE `t_activity` (
 DROP TABLE IF EXISTS `t_article`;
 CREATE TABLE `t_article` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '文章id',
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `content` text COLLATE utf8_unicode_ci NOT NULL COMMENT '文章内容',
-  `create_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
-  `user_id` int(11) NOT NULL COMMENT '创建者id',
+  `create_at` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `user_id` int(11) DEFAULT NULL,
   `role_id` int(11) NOT NULL COMMENT '基于角色权限级别',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  PRIMARY KEY (`id`),
+  KEY `PK_USERID` (`user_id`),
+  CONSTRAINT `PK_USERID` FOREIGN KEY (`user_id`) REFERENCES `t_users` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Table structure for t_book_list
@@ -83,10 +72,12 @@ DROP TABLE IF EXISTS `t_chat`;
 CREATE TABLE `t_chat` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '消息id',
   `content` text COLLATE utf8_unicode_ci COMMENT '内容 ',
-  `create_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
-  `user_id` int(11) NOT NULL COMMENT '发送者id',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `create_at` datetime NOT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `CHAT_PK_USERID` (`user_id`),
+  CONSTRAINT `CHAT_PK_USERID` FOREIGN KEY (`user_id`) REFERENCES `t_users` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Table structure for t_child_module
@@ -110,7 +101,7 @@ CREATE TABLE `t_groups` (
   `leader` int(10) NOT NULL,
   `create_at` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Table structure for t_message
@@ -176,10 +167,10 @@ CREATE TABLE `t_recommend` (
 -- ----------------------------
 DROP TABLE IF EXISTS `t_roles`;
 CREATE TABLE `t_roles` (
-  `id` int(10) NOT NULL AUTO_INCREMENT COMMENT '角色编号',
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '角色编号',
   `role_name` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '角色名称',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Table structure for t_task
@@ -199,16 +190,16 @@ CREATE TABLE `t_task` (
 -- ----------------------------
 DROP TABLE IF EXISTS `t_users`;
 CREATE TABLE `t_users` (
-  `id` int(10) NOT NULL AUTO_INCREMENT COMMENT '用户编号',
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户编号',
   `email` varchar(20) COLLATE utf8_unicode_ci NOT NULL COMMENT '用户邮箱',
   `password` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '用户密码',
   `name` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '用户昵称',
   `role_id` int(10) NOT NULL DEFAULT '3' COMMENT '用户角色编号',
   `group_id` int(10) DEFAULT '0' COMMENT '用户属组编号',
-  `create_at` date DEFAULT NULL,
+  `create_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`),
   KEY `Ref31` (`role_id`),
   KEY `Ref26` (`group_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 SET FOREIGN_KEY_CHECKS=1;
