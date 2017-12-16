@@ -1,6 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ page import="com.glory.entity.User" %>
-<%@ page import="com.glory.entity.Group" %>
+<%@ page import="glory.entity.User" %>
+<%@ page import="glory.entity.Group" %>
 <%@ page import="java.util.List" %>
 <%@ page import="sun.security.acl.GroupImpl" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
@@ -44,7 +44,7 @@
                                                     Group groupItem = groupList.get(i);
 
                                         %>
-                                                  <option value="<%= groupItem.getId()%>" <%if (filter ==groupItem.getId()){%> selected="selected" <%}%> ><%= groupItem.getGroup()%></option>
+                                                  <option value="<%= groupItem.getId()%>" <%if (filter ==groupItem.getId()){%> selected="selected" <%}%> ><%= groupItem.getGroupName()%></option>
                                        <% }}%>
 
                                     </select>
@@ -130,6 +130,7 @@
                     type:'post',
                     dataType:'json',
                     success:function (data) {
+
                         if (data.code == 0) {
                             alert("添加成功")
                             location.replace("/Group/List")
@@ -153,10 +154,10 @@
                     },
                     type:'post',
                     dataType:'json',
-                    success:function () {
+                    success:function (data) {
                         if (data.code == 0) {
                             alert("编辑成功")
-//                            location.replace("/Group/List")
+                           location.replace("/Group/List")
                         } else {
                             alert("编辑失败")
                         }

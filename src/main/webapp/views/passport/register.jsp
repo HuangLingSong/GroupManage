@@ -146,7 +146,7 @@
         $('#email').blur(function () {
             email = $.trim($('#email').val());
             if (email.length > 0) {
-                $.ajax('/Passport/GetUser', {
+                $.ajax('/Passport/CheckUserForm', {
                     data: {
                         email: email,
                     },

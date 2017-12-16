@@ -18,9 +18,11 @@ spring MVC+Maven+hibernate
 
 
 命名规则
-1.类名：大驼峰法 例 User、UserDAO
-2.变量：小驼峰发 例 id、dbManager
-3.常量：大写     例 JDBC_DRIVER
+1.类名、接口名：大驼峰法 例 User、UserDAO
+2.变量：       小驼峰法 例 id、dbManager
+3.常量：       大写     例 JDBC_DRIVER
+4.GET URL:    大驼峰法
+4.POST URL:   大驼峰法
 
 
 

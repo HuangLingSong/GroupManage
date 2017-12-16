@@ -1,9 +1,9 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ page import="com.glory.entity.User" %>
-<%@ page import="com.glory.entity.Group" %>
+<%@ page import="glory.entity.User" %>
+<%@ page import="glory.entity.Group" %>
 <%@ page import="java.util.List" %>
 <%@ page import="sun.security.acl.GroupImpl" %>
-<%@ page import="com.glory.entity.Article" %>
+<%@ page import="glory.entity.Article" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@include file="/views/public.jsp"%>
 

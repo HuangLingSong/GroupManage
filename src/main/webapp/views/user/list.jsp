@@ -1,8 +1,8 @@
-<%@ page import="com.glory.entity.User" %>
+<%@ page import="glory.entity.User" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.glory.entity.Group" %>
+<%@ page import="glory.entity.Group" %>
 <%@ page import="java.security.Guard" %>
-<%@ page import="com.glory.entity.Role" %>
+<%@ page import="glory.entity.Role" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@include file="/views/public.jsp"%>
 
@@ -57,10 +57,12 @@
                                     <td nowrap="">
                                         <select class="multiselect" id="group_<%= userItem.getId()%>">
                                             <%if (userItem.getGroupId()==0) {%> <option value='0' selected="selected"> 没有加入小组 </option>  <%}%>
+
                                         <% if (groupList != null) {
                                             for (int j = 0; j < groupList.size(); j++) {
-                                                Group groupItem = groupList.get(j) ; %>
-                                        <option value="<%= groupItem.getId()%>" <% if (userItem.getGroupId() == groupItem.getId()) {%> selected="selected" <%}%> ><%= groupItem.getGroup() %></option>
+                                                Group groupItem = groupList.get(j) ;
+                                        %>
+                                        <option value="<%= groupItem.getId()%>" <% if (userItem.getGroupId() == groupItem.getId()) {%> selected="selected" <%}%> ><%= groupItem.getGroupName() %></option>
                                         <%
                                                 }
                                             }
@@ -73,7 +75,7 @@
                                                     Role roleTtem = roleList.get(j); %>
 
                                             <option value="<%= roleTtem.getId()%>" <% if (userItem.getRoleId() == roleTtem.getId()) {%>
-                                                    selected="selected" <%}%> > <%= roleTtem.getRole() %>
+                                                    selected="selected" <%}%> > <%= roleTtem.getRoleName() %>
                                             </option>
 
                                             <%

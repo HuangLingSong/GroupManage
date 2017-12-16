@@ -1,9 +1,9 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ page import="com.glory.entity.User" %>
-<%@ page import="com.glory.entity.Group" %>
+<%@ page import="glory.entity.User" %>
+<%@ page import="glory.entity.Group" %>
 <%@ page import="java.util.List" %>
 <%@ page import="sun.security.acl.GroupImpl" %>
-<%@ page import="com.glory.entity.Article" %>
+<%@ page import="glory.entity.Article" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@include file="/views/public.jsp" %>
 
@@ -140,7 +140,7 @@
                 alert("获取历史消息失败error")
             }
         })
-        },3000);
+        },1500);
 
 
 
@@ -163,7 +163,7 @@
                     success: function (data) {
                         if (data.code == 0) {
                             alert("添加成功")
-                            location.replace("/Article/List")
+                            // location.reload();
                         } else {
                             alert("添加失败")
                         }

@@ -6,6 +6,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>
@@ -42,9 +45,9 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
 
 
-    <link rel="stylesheet" type="text/css" href="/resources/bootstrap-3.3.7/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="/resources/Animate/animate.css">
-    <link rel="stylesheet" type="text/css" href="/resources/css/login.css">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/bootstrap-3.3.7/css/bootstrap.css"/>">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/Animate/animate.css"/>">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/login.css"/>">
 
 
 </head>
@@ -76,11 +79,11 @@
                 </div>
                 <div class="form-group">
                     <label for="email" class="sr-only">email</label>
-                    <input type="email" class="form-control" id="email" placeholder="email" autocomplete="off" name="email" required>
+                    <input type="email" class="form-control" id="email" placeholder="email" autocomplete="off" name="email" value="111@qq.com" required>
                 </div>
                 <div class="form-group">
                     <label for="password" class="sr-only">Password</label>
-                    <input type="password" class="form-control" id="password" placeholder="Password" autocomplete="off" name="password" required>
+                    <input type="password" class="form-control" id="password" placeholder="Password" autocomplete="off" name="password" value="111" required>
                 </div>
                 <div class="form-group">
                     <label for="remember"><input type="checkbox" id="remember"> Remember Me</label>
@@ -124,7 +127,7 @@
         $('#email').blur(function () {
             email = $.trim($('#email').val());
             if (email.length > 0) {
-                $.ajax('/Passport/GetUser', {
+                $.ajax('/Passport/CheckUserForm', {
                     data: {
                         email: email,
                     },
@@ -159,7 +162,7 @@
                     success: function (data) {
                         if (data.code == 0) {
                             $('.form-notice').html('<div class="alert alert-success" role="alert">Login was successful.</div>');
-                            location.replace('/Index/Index');
+                            location.replace('/Home');
                         }else {
                             $('.form-notice').html('<div class="alert alert-danger" role="alert">Sign in has failed.</div>');
                         }

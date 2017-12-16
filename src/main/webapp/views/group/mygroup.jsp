@@ -1,8 +1,8 @@
-<%@ page import="com.glory.entity.User" %>
+<%@ page import="glory.entity.User" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.glory.entity.Group" %>
+<%@ page import="glory.entity.Group" %>
 <%@ page import="java.security.Guard" %>
-<%@ page import="com.glory.entity.Role" %>
+<%@ page import="glory.entity.Role" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@include file="/views/public.jsp"%>
 

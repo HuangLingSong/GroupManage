@@ -1,5 +1,5 @@
-<%@ page import="com.glory.entity.User" %>
-<%@ page import="com.glory.entity.Group" %>
+<%@ page import="glory.entity.User" %>
+<%@ page import="glory.entity.Group" %>
 <%@ page import="java.util.List" %>
 <%@include file="/views/public.jsp"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
@@ -49,13 +49,13 @@
                                 <tr>
                                     <td nowrap="" class="small"><%= i + 1%><img src="" width="50"/></td>
                                     <%--<td nowrap="" class="small"><%= groupItem.getId() %><img src="" width="50"/></td>--%>
-                                    <td class="small"><%= groupItem.getGroup() %>
+                                    <td class="small"><%= groupItem.getGroupName() %>
                                     </td>
                                     <%--<td class="small"><%= userItem.getEamil()%>--%>
                                     </td>
                                     <td nowrap="">
                                         <select class="multiselect" id="group_{{i['mp_user_wx_openid']}}">
-                                            <option value="" selected="selected"> <%= groupItem.getLeader() %></option>
+                                            <option value="" selected="selected"> <%= groupItem.getLeaderId() %></option>
                                         <% if (userList != null) {
                                                 for (int j = 0; j < userList.size(); j++) {
                                                     User userItem = userList.get(i);

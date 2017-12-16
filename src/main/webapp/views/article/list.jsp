@@ -1,6 +1,6 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.security.Guard" %>
-<%@ page import="com.glory.entity.*" %>
+<%@ page import="glory.entity.*" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@include file="/views/public.jsp"%>
 
@@ -49,7 +49,10 @@
                                     <%--<td nowrap="" class="small"><%= userItem.getId() %><img src="" width="50"/></td>--%>
                                     <td class="small"><%= article.getTitle() %>
                                     </td>
-                                    <td class="small"><a href="/Article/Details?id=<%= article.getId()%>"><%= article.getContent().substring(0,20)%></a>
+                                    <td class="small">
+                                        <a href="/Article/Details?id=<%= article.getId()%>">
+                                          <%if(article.getContent().length()>20){%> <%= article.getContent().substring(0,20)%><%}else {%> <%= article.getContent()%><%}%>
+                                        </a>
                                     </td>
                                     <%--<td nowrap="">--%>
                                         <%--<select class="multiselect" id="group_<%= userItem.getId()%>">--%>
@@ -141,7 +144,7 @@
             success: function (data) {
                 if (data.code == 0) {
 
-                    location.replace("/User/List")
+                    location.reload();
                 } else {
                     alert("删除失败")
                 }

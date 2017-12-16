@@ -1,9 +1,10 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ page import="com.glory.entity.User" %>
-<%@ page import="com.glory.entity.Group" %>
+<%@ page import="glory.entity.User" %>
+<%@ page import="glory.entity.Group" %>
 <%@ page import="java.util.List" %>
 <%@ page import="sun.security.acl.GroupImpl" %>
-<%@ page import="com.glory.entity.Article" %>
+<%@ page import="glory.entity.Article" %>
+<%@ page import="java.lang.annotation.ElementType" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@include file="/views/public.jsp"%>
 
@@ -106,33 +107,56 @@
             var text = simplemde.value(),
 
                 content = simplemde.options.previewRender(text);
-                // content = simplemde.markdown(text);
+            var id =<% if(article!=null){%><%=article.getId()%><%}else{%>null<%}%>
 
 
             if (title==''||content==''){
                 return;
             }else {
-                console.log(content)
-
-                $.ajax('/Article/CreateForm',{
-                   data:{
-                       title:title,
-                       content:content
-                   },
-                   type:'post',
-                   dataType:'json',
-                   success:function (data) {
-                       if (data.code == 0) {
-                           alert("添加成功")
-                           location.replace("/Article/List")
-                       } else {
+               if (id==null){
+                   $.ajax('/Article/CreateForm',{
+                       data:{
+                           title:title,
+                           content:content
+                       },
+                       type:'post',
+                       dataType:'json',
+                       success:function (data) {
+                           if (data.code == 0) {
+                               alert("发布成功")
+                               location.replace("/Article/List");
+                           } else {
+                               alert("发布失败")
+                           }
+                       },
+                       error:function () {
+                           alert("发布失败")
+                       }
+                   })
+               }else {
+                   $.ajax('/Article/EditForm',{
+                       data:{
+                           id:id,
+                           title:title,
+                           content:content
+                       },
+                       type:'post',
+                       dataType:'json',
+                       success:function (data) {
+                           if (data.code == 0) {
+                               alert("编辑成功")
+                               location.reload();
+                           } else {
+                               alert("编辑失败")
+                           }
+                       },
+                       error:function () {
                            alert("添加失败")
                        }
-                   },
-                   error:function () {
-                       alert("添加失败")
-                   }
-               })
+                   })
+               }
+
+
             }
 
             //

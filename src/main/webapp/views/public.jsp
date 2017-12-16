@@ -1,4 +1,4 @@
-<%@ page import="com.glory.entity.User" %>
+<%@ page import="glory.entity.User" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%
     User user= (User) session.getAttribute("User");
