@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50715
 File Encoding         : 65001
 
-Date: 2017-12-14 09:52:50
+Date: 2017-12-16 08:18:34
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -51,7 +51,7 @@ CREATE TABLE `t_article` (
   PRIMARY KEY (`id`),
   KEY `PK_USERID` (`user_id`),
   CONSTRAINT `PK_USERID` FOREIGN KEY (`user_id`) REFERENCES `t_users` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Table structure for t_book_list
@@ -77,7 +77,7 @@ CREATE TABLE `t_chat` (
   PRIMARY KEY (`id`),
   KEY `CHAT_PK_USERID` (`user_id`),
   CONSTRAINT `CHAT_PK_USERID` FOREIGN KEY (`user_id`) REFERENCES `t_users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Table structure for t_child_module
@@ -98,10 +98,10 @@ DROP TABLE IF EXISTS `t_groups`;
 CREATE TABLE `t_groups` (
   `id` int(10) NOT NULL AUTO_INCREMENT COMMENT '组编号',
   `group_name` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '组名',
-  `leader` int(10) NOT NULL,
+  `leader_id` int(10) NOT NULL,
   `create_at` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Table structure for t_message
@@ -192,14 +192,14 @@ DROP TABLE IF EXISTS `t_users`;
 CREATE TABLE `t_users` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户编号',
   `email` varchar(20) COLLATE utf8_unicode_ci NOT NULL COMMENT '用户邮箱',
-  `password` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '用户密码',
-  `name` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '用户昵称',
-  `role_id` int(10) NOT NULL DEFAULT '3' COMMENT '用户角色编号',
+  `password` varchar(50) COLLATE utf8_unicode_ci NOT NULL COMMENT '用户密码',
+  `name` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '用户昵称',
+  `role_id` int(10) DEFAULT '3' COMMENT '用户角色编号',
   `group_id` int(10) DEFAULT '0' COMMENT '用户属组编号',
-  `create_at` datetime DEFAULT NULL,
+  `create_at` datetime NOT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`),
   KEY `Ref31` (`role_id`),
   KEY `Ref26` (`group_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 SET FOREIGN_KEY_CHECKS=1;
