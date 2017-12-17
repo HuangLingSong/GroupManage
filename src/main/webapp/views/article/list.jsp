@@ -51,7 +51,7 @@
                                     </td>
                                     <td class="small">
                                         <a href="/Article/Details?id=<%= article.getId()%>">
-                                          <%if(article.getContent().length()>20){%> <%= article.getContent().substring(0,20)%><%}else {%> <%= article.getContent()%><%}%>
+                                          <%if(article.getContent().length()>20){%> <%= article.getContent().substring(0,20)%>....<%}else {%> <%= article.getContent()%><%}%>
                                         </a>
                                     </td>
                                     <%--<td nowrap="">--%>

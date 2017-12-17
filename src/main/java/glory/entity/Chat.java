@@ -5,6 +5,10 @@ import javax.persistence.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+
+/**
+ * 聊天消息实体类
+ */
 @Entity
 @Table(name = "t_chat", schema = "glory", catalog = "")
 public class Chat {

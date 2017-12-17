@@ -14,7 +14,7 @@ import java.util.List;
 public class RoleServiceImpl implements RoleService{
 
     @Resource
-    RoleDAO roleDAO;
+    private RoleDAO roleDAO;
 
     @Override
     public List<Role> findAll() {

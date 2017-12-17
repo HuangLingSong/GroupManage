@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import glory.dao.ArticleDao;
 import glory.entity.Article;
-import glory.util.PageBean;
 
 @Transactional // 开启事务注解
 @Service 

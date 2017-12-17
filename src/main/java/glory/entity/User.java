@@ -6,8 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * User类
- * author hope
+ * User实体类
  */
 @Entity
 @Table(name = "t_users", schema = "glory", catalog = "")

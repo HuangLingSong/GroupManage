@@ -148,6 +148,14 @@
 
 
                 <li>
+                    <a class="accordion-toggle" href="#sideAccount_task"><span class="glyphicon glyphicon-tasks"></span><span class="sidebar-title">任务管理</span><span class="caret"></span></a>
+                    <ul id="sideAccount_task" class="nav sub-nav" style="">
+                        <li><a class="ajax-disable" href="/Task/List"><span class="glyphicon glyphicon-align-left"></span> 任务列表 </a></li>                    <li class="divider"></li>
+                        <li><a class="ajax-disable" href="/Task/Create"><span class="glyphicon glyphicon-align-left"></span> 新建任务 </a></li>                      <li class="divider"></li>
+                        <%--<li><a class="ajax-disable" href="/account/group"><span class="glyphicon glyphicon-align-left"></span> 添加/删除成员 </a></li>                      <li class="divider"></li>--%>
+                    </ul>
+                </li>
+                <li>
                     <a  href="/Chat/Chat"><span class="glyphicon glyphicon-edit"></span><span class="sidebar-title">聊天室</span></a>
 
                 </li>

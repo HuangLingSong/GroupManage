@@ -3,7 +3,6 @@ package glory.service;
 import java.util.List;
 
 import glory.entity.Article;
-import glory.util.PageBean;
 
 public interface ArticleService {
 

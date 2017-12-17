@@ -5,7 +5,6 @@ import javax.persistence.*;
 
 /**
  * Role类
- * author hope
  */
 @Entity
 @Table(name = "t_roles", schema = "glory", catalog = "")

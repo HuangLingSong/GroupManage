@@ -6,7 +6,6 @@ import java.util.Date;
 
 /**
  * Group类
- * author hope
  */
 @Entity
 @Table(name = "t_groups", schema = "glory", catalog = "")

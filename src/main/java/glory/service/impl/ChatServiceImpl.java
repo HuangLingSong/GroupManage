@@ -11,6 +11,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 
+@org.springframework.transaction.annotation.Transactional
 @Service
 public class ChatServiceImpl implements ChatService {
 

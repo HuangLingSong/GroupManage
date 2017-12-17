@@ -1,10 +1,13 @@
 package glory.entity;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+
+/**
+ * 文章实体类
+ */
 @Entity
 @Table(name = "t_article", schema = "glory")
 public class Article {
