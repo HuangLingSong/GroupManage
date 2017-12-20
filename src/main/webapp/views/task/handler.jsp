@@ -162,6 +162,7 @@
                     $.ajax('/Task/EditForm', {
                         data: {
                             id: id,
+                            name: name,
                             describe: describe,
                             receiverId: receiverId,
                             status: status,
@@ -177,7 +178,7 @@
                             }
                         },
                         error: function () {
-                            alert("添加失败")
+                            alert("失败")
                         }
                     })
                 }

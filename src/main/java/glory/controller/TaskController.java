@@ -115,14 +115,22 @@ public class TaskController {
             @RequestParam("id") int id,
             @RequestParam("name") String name,
             @RequestParam("describe") String describe,
-            @RequestParam("receiverId") int receiverId
+            @RequestParam("receiverId") int receiverId,
+            @RequestParam("status") String status
     ){
+//        System.out.println(id);
+//        System.out.println(name);
+//        System.out.println(describe);
+//        System.out.println(receiverId);
         Task  task= taskService.getTaskById(id);
 
         ResponseJson responseJson;
+
         task.setName(name);
         task.setDescription(describe);
         task.setReceiverId(receiverId);
+        task.setStatus(status);
+        taskService.updateTask(task);
         responseJson = new ResponseJson(0, null, "编辑成功");
         return responseJson;
     }
